@@ -1,0 +1,423 @@
+{
+  "common": {
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "deleting": "Suppression…",
+    "save": "Enregistrer",
+    "download": "Télécharger",
+    "user": "Utilisateur"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "documents": "Documents",
+    "billing": "Facturation",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "signOut": "Déconnexion"
+  },
+  "language": {
+    "label": "Langue"
+  },
+  "landing": {
+    "nav": {
+      "features": "Fonctionnalités",
+      "pricing": "Tarifs",
+      "signIn": "Se connecter",
+      "startFree": "Commencer gratuitement"
+    },
+    "hero": {
+      "badge": "Désormais avec des réponses en continu",
+      "titlePart1": "Vos documents,",
+      "titleEmphasis": "intelligemment",
+      "titlePart2": "commentés",
+      "subtitle": "Importez n'importe quel document. Posez n'importe quelle question. Obtenez des réponses précises et citées, appuyées sur les paragraphes exacts qui comptent.",
+      "getStarted": "Commencer gratuitement",
+      "signIn": "Se connecter"
+    },
+    "demo": {
+      "documentsLabel": "Documents",
+      "documents": ["Rapport annuel 2024", "Résultats du T3", "Dépôt SEC 10-K", "Procès-verbal du conseil"],
+      "question": "Quelle a été la croissance totale du chiffre d'affaires par rapport à 2023 ?",
+      "answer": "Le chiffre d'affaires total a augmenté de {{growth}} sur un an, atteignant {{current}} pour l'exercice 2024 contre {{previous}} en 2023.",
+      "answerContinued": "Cette hausse est principalement due aux abonnements entreprise",
+      "inputPlaceholder": "Posez n'importe quelle question sur vos documents…"
+    },
+    "features": {
+      "eyebrow": "Pourquoi Docna",
+      "heading": "Conçu pour un travail documentaire sérieux",
+      "items": [
+        { "title": "Recherche sémantique", "desc": "La recherche vectorielle trouve les passages les plus pertinents parmi des milliers de pages en quelques millisecondes." },
+        { "title": "Réponses en continu", "desc": "Réponses de l'IA en temps réel avec sources citées, pour retracer chaque affirmation jusqu'au document." },
+        { "title": "Traitement instantané", "desc": "Importez des PDF, documents Word ou texte brut — ils sont indexés et prêts à être interrogés en quelques secondes." },
+        { "title": "Privé par défaut", "desc": "Vos documents restent les vôtres. Chiffrement de bout en bout, conforme SOC 2, aucune donnée utilisée pour l'entraînement." }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Tarifs",
+      "heading": "Des tarifs simples et honnêtes",
+      "mostPopular": "Le plus populaire",
+      "perMonth": "/mois",
+      "customPricing": "Tarif personnalisé",
+      "plans": [
+        { "name": "Gratuit", "cta": "Commencer", "features": ["10 documents", "100 requêtes/mois", "50 Mo de stockage", "Support communautaire"] },
+        { "name": "Pro", "cta": "Essai gratuit", "features": ["Documents illimités", "2 000 requêtes/mois", "10 Go de stockage", "Support prioritaire", "Accès API"] },
+        { "name": "Enterprise", "cta": "Nous contacter", "features": ["Tout illimité", "Modèles personnalisés", "SSO / SAML", "Support dédié", "Garantie SLA"] }
+      ]
+    },
+    "cta": {
+      "heading": "Commencez à poser de meilleures questions",
+      "body": "Rejoignez les chercheurs, avocats et analystes qui utilisent Docna pour exploiter les connaissances contenues dans leurs documents.",
+      "button": "Commencer gratuitement — sans carte bancaire"
+    },
+    "footer": {
+      "rights": "© {{year}} Docna. Tous droits réservés.",
+      "privacy": "Confidentialité",
+      "terms": "Conditions"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Content de vous revoir",
+      "subtitle": "Connectez-vous à votre compte Docna",
+      "email": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "password": "Mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "signIn": "Se connecter",
+      "signingIn": "Connexion…",
+      "invalidCredentials": "Identifiants invalides",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "createOne": "Créez-en un"
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Commencez à interroger vos documents en quelques minutes",
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "password": "Mot de passe",
+      "passwordPlaceholder": "8 caractères min.",
+      "confirmPassword": "Confirmer le mot de passe",
+      "confirmPasswordPlaceholder": "Ressaisissez le mot de passe",
+      "createAccount": "Créer un compte",
+      "creatingAccount": "Création du compte…",
+      "agreementPrefix": "En créant un compte, vous acceptez nos",
+      "agreementAnd": "et notre",
+      "terms": "Conditions",
+      "privacyPolicy": "Politique de confidentialité",
+      "haveAccount": "Vous avez déjà un compte ?",
+      "signIn": "Se connecter"
+    },
+    "validation": {
+      "invalidEmail": "Adresse e-mail invalide",
+      "passwordRequired": "Le mot de passe est requis",
+      "currentPasswordRequired": "Le mot de passe actuel est requis",
+      "nameMin": "Le nom doit contenir au moins 2 caractères",
+      "passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
+      "passwordUppercase": "Doit contenir une lettre majuscule",
+      "passwordNumber": "Doit contenir un chiffre",
+      "passwordsMismatch": "Les mots de passe ne correspondent pas"
+    },
+    "toasts": {
+      "loginFailed": "Échec de la connexion",
+      "registrationFailed": "Échec de l'inscription"
+    },
+    "forgotPasswordPage": {
+      "title": "Réinitialiser votre mot de passe",
+      "body": "La réinitialisation du mot de passe par e-mail en libre-service n'est pas encore disponible.",
+      "loggedInHint": "Si vous pouvez encore vous connecter, vous pouvez changer votre mot de passe à tout moment depuis les Paramètres.",
+      "goToSettings": "Aller aux Paramètres",
+      "supportHint": "Sinon, contactez le support et nous vous aiderons à retrouver l'accès.",
+      "contactSupport": "Contacter le support",
+      "backToSignIn": "Retour à la connexion"
+    }
+  },
+  "authLayout": {
+    "rights": "© {{year}} Docna",
+    "privacy": "Confidentialité",
+    "terms": "Conditions"
+  },
+  "sidebar": {
+    "newConversation": "Nouvelle conversation",
+    "uploadDocument": "Importer un document",
+    "dropToUpload": "Déposez pour importer",
+    "uploading": "Importation",
+    "processing": "Traitement…",
+    "documents": "Documents",
+    "conversations": "Conversations",
+    "noDocuments": "Aucun document pour l'instant",
+    "moreDocuments": "+{{count}} de plus →",
+    "showMore": "Afficher {{count}} de plus",
+    "showLess": "Afficher moins",
+    "deleteDocumentAria": "Supprimer {{name}}",
+    "deleteConversationAria": "Supprimer {{name}}"
+  },
+  "dashboard": {
+    "profileBanner": {
+      "prefix": "Complétez votre profil —",
+      "link": "ajoutez votre nom",
+      "suffix": "pour que votre compte vous ressemble."
+    },
+    "emptyState": {
+      "noDocuments": {
+        "title": "Aucun document pour l'instant",
+        "body": "Importez un PDF, un document Word ou un fichier texte pour commencer à poser des questions sur son contenu.",
+        "upload": "Importer un document"
+      },
+      "withDocuments": {
+        "title": "Démarrez une conversation",
+        "body": "Posez n'importe quelle question sur vos documents. Docna récupère les passages pertinents et cite chaque source."
+      }
+    },
+    "suggestedPrompts": [
+      "Quels sont les principaux thèmes et concepts abordés ?",
+      "Quelles sont les principales conclusions ?",
+      "Qu'est-ce que l'auteur défend ou argumente ?",
+      "À quelles questions ce document répond-il ?"
+    ],
+    "inputPlaceholder": {
+      "withConversation": "Posez n'importe quelle question sur vos documents… (↵ pour envoyer, Maj+↵ pour un saut de ligne)",
+      "noConversation": "Sélectionnez un document dans la barre latérale pour démarrer une conversation"
+    },
+    "disclaimer": "Les réponses s'appuient sur vos documents. Vérifiez toujours les informations importantes.",
+    "sources": {
+      "title": "Sources",
+      "empty": "Aucune source pour l'instant",
+      "emptyBody": "Les passages sources apparaîtront ici après avoir posé une question",
+      "relevanceHint": "Les scores de pertinence indiquent à quel point chaque passage correspond à votre question"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "count_one": "{{count}} document",
+    "count_other": "{{count}} documents",
+    "searchPlaceholder": "Rechercher des documents…",
+    "upload": "Importer",
+    "dropToUpload": "Déposez les fichiers pour les importer",
+    "uploading": "Importation",
+    "processing": "Traitement…",
+    "noMatches": "Aucun résultat trouvé",
+    "noDocuments": "Aucun document pour l'instant",
+    "noMatchesFor": "Aucun document ne correspond à « {{search}} »",
+    "noDocumentsBody": "Importez un PDF, un document Word ou un fichier texte pour commencer à poser des questions sur son contenu.",
+    "clearSearch": "Effacer la recherche",
+    "uploadFirst": "Importez votre premier document",
+    "status": {
+      "ready": "Prêt",
+      "processing": "Traitement",
+      "uploading": "Importation",
+      "error": "Erreur"
+    },
+    "askQuestions": "Poser des questions",
+    "pages_one": "{{count}} page",
+    "pages_other": "{{count}} pages",
+    "viewDocument": "Voir le document",
+    "deleteDocument": "Supprimer le document",
+    "notFound": "Document introuvable",
+    "backToDocuments": "Retour aux documents",
+    "preview": "Aperçu",
+    "indexedChunks": "Extraits indexés",
+    "previewFailed": "Échec du chargement de l'aperçu PDF.",
+    "downloadInstead": "Télécharger à la place",
+    "previewUnavailable": "Aperçu indisponible pour ce type de fichier.",
+    "chatInstead": "Discuter avec ce document à la place",
+    "noChunks": "Aucun extrait disponible.",
+    "stillIndexing": "Le document est encore en cours d'indexation…",
+    "chunk": "EXTRAIT {{index}}",
+    "viewFullDocument": "Voir le document complet",
+    "highlightHint": "Le passage cité est surligné sur cette page.",
+    "deleteDialog": {
+      "title": "Supprimer le document",
+      "body": "Cela supprimera définitivement le document et tout son contenu indexé. Les conversations utilisant ce document perdront l'accès à son contexte.",
+      "bodyEmphasis": "Cette action est irréversible."
+    },
+    "sourceCard": {
+      "showMore": "Afficher plus",
+      "showLess": "Afficher moins",
+      "open": "Ouvrir"
+    },
+    "toasts": {
+      "deleted": "Document supprimé",
+      "deleteFailed": "Échec de la suppression du document",
+      "uploadFailed": "Échec de l'importation"
+    }
+  },
+  "chat": {
+    "newConversation": {
+      "title": "Nouvelle conversation",
+      "description": "Sélectionnez un ou plusieurs documents à inclure dans cette conversation.",
+      "noDocuments": "Aucun document indexé pour l'instant. Importez-en un et attendez la fin du traitement.",
+      "selectAll": "Tout sélectionner",
+      "deselectAll": "Tout désélectionner",
+      "starting": "Démarrage…",
+      "start": "Démarrer la conversation"
+    },
+    "deleteDialog": {
+      "title": "Supprimer la conversation",
+      "body": "Cela supprimera définitivement la conversation et tous ses messages.",
+      "bodyEmphasis": "Cette action est irréversible."
+    },
+    "queryBox": {
+      "placeholder": "Posez n'importe quelle question sur vos documents…",
+      "stopGeneration": "Arrêter la génération",
+      "send": "Envoyer (↵)",
+      "messageInput": "Champ de message"
+    },
+    "toasts": {
+      "couldNotStart": "Impossible de démarrer la conversation",
+      "couldNotDelete": "Impossible de supprimer la conversation",
+      "failedResponse": "Échec de l'obtention d'une réponse"
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Gérez votre compte et vos préférences",
+    "profile": {
+      "title": "Profil",
+      "desc": "Vos informations personnelles et votre nom affiché",
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "emailHint": "Contactez le support pour modifier votre e-mail",
+      "save": "Enregistrer les modifications",
+      "saving": "Enregistrement…"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "desc": "Choisissez votre thème de couleurs préféré",
+      "dark": "Sombre",
+      "light": "Clair",
+      "system": "Système"
+    },
+    "password": {
+      "title": "Mot de passe",
+      "desc": "Mettez à jour le mot de passe de votre compte",
+      "current": "Mot de passe actuel",
+      "new": "Nouveau mot de passe",
+      "confirm": "Confirmer le nouveau mot de passe",
+      "newPlaceholder": "8 caractères min.",
+      "confirmPlaceholder": "Ressaisissez le nouveau mot de passe",
+      "change": "Changer le mot de passe",
+      "changing": "Changement…"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "desc": "Contrôlez comment et quand Docna vous contacte",
+      "items": [
+        { "label": "Traitement du document terminé", "desc": "Vous avertir quand vos imports sont prêts à être interrogés" },
+        { "label": "Résumé d'utilisation hebdomadaire", "desc": "Recevoir un résumé hebdomadaire de vos statistiques d'utilisation" },
+        { "label": "Nouveautés du produit", "desc": "Être informé des nouvelles fonctionnalités et améliorations" }
+      ]
+    },
+    "danger": {
+      "title": "Zone de danger",
+      "deleteAccount": "Supprimer le compte",
+      "warning": "Supprime définitivement votre compte et tous vos documents. Cette action est irréversible.",
+      "delete": "Supprimer"
+    },
+    "deleteAccountDialog": {
+      "title": "Supprimer le compte",
+      "body": "Cela désactivera votre compte et vous déconnectera immédiatement. Vous perdrez l'accès à vos documents et conversations.",
+      "bodyEmphasis": "Cette action est irréversible.",
+      "confirmLabel": "Saisissez {{word}} pour confirmer"
+    },
+    "toasts": {
+      "profileUpdated": "Profil mis à jour",
+      "profileUpdateFailed": "Échec de la mise à jour du profil",
+      "passwordChanged": "Mot de passe changé",
+      "passwordChangeFailed": "Échec du changement de mot de passe",
+      "accountDeleted": "Compte supprimé",
+      "accountDeleteFailed": "Échec de la suppression du compte"
+    }
+  },
+  "billing": {
+    "title": "Facturation",
+    "subtitle": "Gérez votre abonnement et votre utilisation",
+    "currentPlan": "Forfait actuel",
+    "active": "Actif",
+    "cancelsOn": "Résilié le {{date}}",
+    "renewsOn": "Renouvelé le {{date}}",
+    "manageSubscription": "Gérer l'abonnement",
+    "usageTitle": "Utilisation sur cette période",
+    "documents": "Documents",
+    "queries": "Requêtes",
+    "storage": "Stockage",
+    "plansHeading": "Forfaits",
+    "perInterval": "/{{interval}}",
+    "upgrade": "Passer au niveau supérieur",
+    "switchPlan": "Changer",
+    "endingWarning": {
+      "title": "Fin de l'abonnement",
+      "body": "Votre abonnement est programmé pour être résilié à la fin de la période actuelle. Vous conserverez l'accès jusque-là.",
+      "resume": "Réactiver l'abonnement"
+    },
+    "toasts": {
+      "checkoutFailed": "Échec de l'ouverture du paiement",
+      "portalFailed": "Échec de l'ouverture du portail de facturation"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page introuvable",
+      "body": "La page que vous cherchez n'existe pas ou a peut-être été déplacée.",
+      "backHome": "Retour à l'accueil"
+    },
+    "generic": {
+      "title": "Une erreur est survenue",
+      "body": "Une erreur inattendue s'est produite. Essayez de recharger la page ou revenez à l'accueil.",
+      "reload": "Recharger la page",
+      "backHome": "Retour à l'accueil"
+    }
+  },
+  "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Nous serions ravis de vous entendre — écrivez-nous et nous vous répondrons rapidement.",
+    "sales": {
+      "title": "Ventes & Enterprise",
+      "body": "Intéressé par les fonctionnalités Enterprise, des modèles personnalisés ou le SSO ? Parlez à notre équipe commerciale.",
+      "cta": "E-mail aux ventes"
+    },
+    "support": {
+      "title": "Support",
+      "body": "Un problème avec votre compte ou un document ? Nous sommes là pour vous aider.",
+      "cta": "E-mail au support"
+    },
+    "backHome": "Retour à l'accueil"
+  },
+  "legal": {
+    "backHome": "Retour à l'accueil",
+    "lastUpdated": "Dernière mise à jour : {{date}}",
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "intro": "Cette politique explique quelles informations Docna collecte, comment elles sont utilisées, et les choix dont vous disposez. Elle s'applique à toute personne utilisant le service Docna.",
+      "sections": [
+        { "heading": "Informations que nous collectons", "body": "Les informations de compte que vous fournissez (nom, e-mail), les documents que vous importez, et des données d'usage basiques (comme le nombre de requêtes) nécessaires au fonctionnement et à l'amélioration du service." },
+        { "heading": "Comment nous utilisons vos informations", "body": "Pour fournir le service principal — indexer vos documents et répondre à vos questions —, ainsi que pour la facturation, le support de compte et la fiabilité du service." },
+        { "heading": "Traitement des documents et IA", "body": "Les documents importés sont traités pour générer des embeddings et retrouver les passages pertinents pour vos questions. Vos documents ne sont jamais utilisés pour entraîner des modèles partagés ou tiers." },
+        { "heading": "Partage des données", "body": "Nous ne vendons pas vos données. Nous partageons le minimum d'informations nécessaire avec nos prestataires — comme nos fournisseurs d'IA, de stockage et de paiement — uniquement pour faire fonctionner Docna, sous confidentialité contractuelle." },
+        { "heading": "Conservation et suppression des données", "body": "Vos documents et conversations sont conservés tant que votre compte est actif. Supprimer un document ou votre compte efface définitivement les données associées de nos systèmes." },
+        { "heading": "Sécurité", "body": "Les données sont chiffrées en transit et au repos. L'accès à vos documents est limité à votre compte et aux processus automatisés qui répondent à vos questions." },
+        { "heading": "Vos droits", "body": "Vous pouvez accéder à vos données, les exporter ou les supprimer à tout moment depuis les paramètres de votre compte, ou en nous contactant directement." },
+        { "heading": "Modifications de cette politique", "body": "En cas de changement important de cette politique, nous vous en informerons par e-mail ou via le produit avant son entrée en vigueur." }
+      ],
+      "contactPrompt": "Des questions sur cette politique ?",
+      "contactLink": "Contactez-nous"
+    },
+    "terms": {
+      "title": "Conditions d'utilisation",
+      "intro": "Ces conditions régissent votre utilisation de Docna. En créant un compte ou en utilisant le service, vous les acceptez.",
+      "sections": [
+        { "heading": "Utilisation de Docna", "body": "Vous devez avoir la capacité juridique de conclure un contrat contraignant pour utiliser Docna, et vous êtes responsable de l'activité de votre compte." },
+        { "heading": "Abonnements et facturation", "body": "Les forfaits payants se renouvellent automatiquement à chaque période de facturation jusqu'à leur résiliation. Vous pouvez résilier à tout moment depuis Facturation ; vous conserverez l'accès jusqu'à la fin de la période en cours." },
+        { "heading": "Utilisation acceptable", "body": "N'importez pas de contenu que vous n'avez pas le droit de partager, et n'utilisez pas Docna pour enfreindre la loi ou les droits d'autrui, ni pour abuser ou surcharger le service." },
+        { "heading": "Votre contenu", "body": "Vous êtes propriétaire des documents que vous importez. Vous accordez à Docna une licence limitée pour les traiter uniquement afin de vous fournir le service — rien de plus." },
+        { "heading": "Réponses générées par IA", "body": "Les réponses sont générées par IA et s'appuient sur vos documents, mais peuvent rester incomplètes ou inexactes. Vérifiez toujours ce qui est important." },
+        { "heading": "Avertissements et responsabilité", "body": "Docna est fourni « en l'état », sans garantie d'aucune sorte. Dans la mesure permise par la loi, Docna n'est pas responsable des dommages indirects ou consécutifs liés à l'utilisation du service." },
+        { "heading": "Résiliation", "body": "Vous pouvez cesser d'utiliser Docna et supprimer votre compte à tout moment. Nous pouvons suspendre ou résilier les comptes qui enfreignent ces conditions." },
+        { "heading": "Modifications de ces conditions", "body": "Nous pouvons mettre à jour ces conditions de temps à autre ; poursuivre l'utilisation de Docna après un changement signifie que vous acceptez les conditions mises à jour." }
+      ],
+      "contactPrompt": "Des questions sur ces conditions ?",
+      "contactLink": "Contactez-nous"
+    }
+  }
+}

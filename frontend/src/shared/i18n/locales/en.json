@@ -1,0 +1,423 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "save": "Save",
+    "download": "Download",
+    "user": "User"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "documents": "Documents",
+    "billing": "Billing",
+    "settings": "Settings",
+    "profile": "Profile",
+    "signOut": "Sign out"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "landing": {
+    "nav": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "signIn": "Sign in",
+      "startFree": "Start free"
+    },
+    "hero": {
+      "badge": "Now with streaming answers",
+      "titlePart1": "Your documents,",
+      "titleEmphasis": "intelligently",
+      "titlePart2": "answered",
+      "subtitle": "Upload any document. Ask any question. Get precise, cited answers backed by the exact paragraphs that matter.",
+      "getStarted": "Get started free",
+      "signIn": "Sign in"
+    },
+    "demo": {
+      "documentsLabel": "Documents",
+      "documents": ["Annual Report 2024", "Q3 Earnings Call", "SEC Filing 10-K", "Board Minutes"],
+      "question": "What was the total revenue growth compared to 2023?",
+      "answer": "Total revenue grew by {{growth}} year-over-year, reaching {{current}} in FY2024 versus {{previous}} in FY2023.",
+      "answerContinued": "This was driven primarily by enterprise subscriptions",
+      "inputPlaceholder": "Ask anything about your documents…"
+    },
+    "features": {
+      "eyebrow": "Why Docna",
+      "heading": "Built for serious document work",
+      "items": [
+        { "title": "Semantic retrieval", "desc": "Vector search finds the most relevant passages across thousands of pages in milliseconds." },
+        { "title": "Streaming answers", "desc": "Real-time AI responses with cited sources, so you can trace every claim back to the document." },
+        { "title": "Instant processing", "desc": "Upload PDFs, Word docs, or plain text — they're indexed and ready to query in seconds." },
+        { "title": "Private by default", "desc": "Your documents stay yours. End-to-end encryption, SOC 2 compliant, zero data training." }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "heading": "Simple, honest pricing",
+      "mostPopular": "Most popular",
+      "perMonth": "/month",
+      "customPricing": "Custom pricing",
+      "plans": [
+        { "name": "Free", "cta": "Get started", "features": ["10 documents", "100 queries/month", "50 MB storage", "Community support"] },
+        { "name": "Pro", "cta": "Start free trial", "features": ["Unlimited documents", "2,000 queries/month", "10 GB storage", "Priority support", "API access"] },
+        { "name": "Enterprise", "cta": "Contact us", "features": ["Unlimited everything", "Custom models", "SSO / SAML", "Dedicated support", "SLA guarantee"] }
+      ]
+    },
+    "cta": {
+      "heading": "Start asking better questions",
+      "body": "Join researchers, lawyers, and analysts who use Docna to unlock the knowledge in their documents.",
+      "button": "Get started free — no card required"
+    },
+    "footer": {
+      "rights": "© {{year}} Docna. All rights reserved.",
+      "privacy": "Privacy",
+      "terms": "Terms"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your Docna account",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…",
+      "invalidCredentials": "Invalid credentials",
+      "noAccount": "Don't have an account?",
+      "createOne": "Create one"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Start querying your documents in minutes",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "Min. 8 characters",
+      "confirmPassword": "Confirm password",
+      "confirmPasswordPlaceholder": "Re-enter password",
+      "createAccount": "Create account",
+      "creatingAccount": "Creating account…",
+      "agreementPrefix": "By creating an account you agree to our",
+      "agreementAnd": "and",
+      "terms": "Terms",
+      "privacyPolicy": "Privacy Policy",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "validation": {
+      "invalidEmail": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "currentPasswordRequired": "Current password is required",
+      "nameMin": "Name must be at least 2 characters",
+      "passwordMin": "Password must be at least 8 characters",
+      "passwordUppercase": "Must contain an uppercase letter",
+      "passwordNumber": "Must contain a number",
+      "passwordsMismatch": "Passwords do not match"
+    },
+    "toasts": {
+      "loginFailed": "Login failed",
+      "registrationFailed": "Registration failed"
+    },
+    "forgotPasswordPage": {
+      "title": "Reset your password",
+      "body": "Self-service password reset by email isn't available yet.",
+      "loggedInHint": "If you can still sign in, you can change your password anytime from Settings.",
+      "goToSettings": "Go to Settings",
+      "supportHint": "Otherwise, contact support and we'll help you regain access.",
+      "contactSupport": "Contact support",
+      "backToSignIn": "Back to sign in"
+    }
+  },
+  "authLayout": {
+    "rights": "© {{year}} Docna",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "sidebar": {
+    "newConversation": "New conversation",
+    "uploadDocument": "Upload document",
+    "dropToUpload": "Drop to upload",
+    "uploading": "Uploading",
+    "processing": "Processing…",
+    "documents": "Documents",
+    "conversations": "Conversations",
+    "noDocuments": "No documents yet",
+    "moreDocuments": "+{{count}} more →",
+    "showMore": "Show {{count}} more",
+    "showLess": "Show less",
+    "deleteDocumentAria": "Delete {{name}}",
+    "deleteConversationAria": "Delete {{name}}"
+  },
+  "dashboard": {
+    "profileBanner": {
+      "prefix": "Complete your profile —",
+      "link": "add your name",
+      "suffix": "so your account feels like yours."
+    },
+    "emptyState": {
+      "noDocuments": {
+        "title": "No documents yet",
+        "body": "Upload a PDF, Word doc, or text file to start asking questions about its content.",
+        "upload": "Upload document"
+      },
+      "withDocuments": {
+        "title": "Start a conversation",
+        "body": "Ask anything about your documents. Docna retrieves the relevant passages and cites every source."
+      }
+    },
+    "suggestedPrompts": [
+      "What are the main themes and concepts covered?",
+      "What are the main conclusions?",
+      "What does the author argue or defend?",
+      "What questions does this document answer?"
+    ],
+    "inputPlaceholder": {
+      "withConversation": "Ask anything about your documents… (↵ to send, Shift+↵ for newline)",
+      "noConversation": "Select a document from the sidebar to start a conversation"
+    },
+    "disclaimer": "Answers are grounded in your documents. Always verify important information.",
+    "sources": {
+      "title": "Sources",
+      "empty": "No sources yet",
+      "emptyBody": "Source passages will appear here after you ask a question",
+      "relevanceHint": "Relevance scores show how closely each passage matches your query"
+    }
+  },
+  "documents": {
+    "title": "Documents",
+    "count_one": "{{count}} document",
+    "count_other": "{{count}} documents",
+    "searchPlaceholder": "Search documents…",
+    "upload": "Upload",
+    "dropToUpload": "Drop files to upload",
+    "uploading": "Uploading",
+    "processing": "Processing…",
+    "noMatches": "No matches found",
+    "noDocuments": "No documents yet",
+    "noMatchesFor": "No documents match \"{{search}}\"",
+    "noDocumentsBody": "Upload a PDF, Word doc, or text file to start asking questions about its content.",
+    "clearSearch": "Clear search",
+    "uploadFirst": "Upload your first document",
+    "status": {
+      "ready": "Ready",
+      "processing": "Processing",
+      "uploading": "Uploading",
+      "error": "Error"
+    },
+    "askQuestions": "Ask questions",
+    "pages_one": "{{count}} page",
+    "pages_other": "{{count}} pages",
+    "viewDocument": "View document",
+    "deleteDocument": "Delete document",
+    "notFound": "Document not found",
+    "backToDocuments": "Back to documents",
+    "preview": "Preview",
+    "indexedChunks": "Indexed chunks",
+    "previewFailed": "Failed to load PDF preview.",
+    "downloadInstead": "Download instead",
+    "previewUnavailable": "Preview not available for this file type.",
+    "chatInstead": "Chat with this document instead",
+    "noChunks": "No chunks available.",
+    "stillIndexing": "Document is still being indexed…",
+    "chunk": "CHUNK {{index}}",
+    "viewFullDocument": "View full document",
+    "highlightHint": "The cited passage is highlighted on this page.",
+    "deleteDialog": {
+      "title": "Delete document",
+      "body": "This will permanently delete the document and all its indexed content. Any conversations using this document will lose access to its context.",
+      "bodyEmphasis": "This action cannot be undone."
+    },
+    "sourceCard": {
+      "showMore": "Show more",
+      "showLess": "Show less",
+      "open": "Open"
+    },
+    "toasts": {
+      "deleted": "Document deleted",
+      "deleteFailed": "Failed to delete document",
+      "uploadFailed": "Upload failed"
+    }
+  },
+  "chat": {
+    "newConversation": {
+      "title": "New conversation",
+      "description": "Select one or more documents to include in this conversation.",
+      "noDocuments": "No indexed documents yet. Upload and wait for processing to complete.",
+      "selectAll": "Select all",
+      "deselectAll": "Deselect all",
+      "starting": "Starting…",
+      "start": "Start conversation"
+    },
+    "deleteDialog": {
+      "title": "Delete conversation",
+      "body": "This will permanently delete the conversation and all its messages.",
+      "bodyEmphasis": "This action cannot be undone."
+    },
+    "queryBox": {
+      "placeholder": "Ask anything about your documents…",
+      "stopGeneration": "Stop generation",
+      "send": "Send (↵)",
+      "messageInput": "Message input"
+    },
+    "toasts": {
+      "couldNotStart": "Could not start conversation",
+      "couldNotDelete": "Could not delete conversation",
+      "failedResponse": "Failed to get a response"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account and preferences",
+    "profile": {
+      "title": "Profile",
+      "desc": "Your personal information and display name",
+      "fullName": "Full name",
+      "email": "Email address",
+      "emailHint": "Contact support to change your email",
+      "save": "Save changes",
+      "saving": "Saving…"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "desc": "Choose your preferred color theme",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System"
+    },
+    "password": {
+      "title": "Password",
+      "desc": "Update your account password",
+      "current": "Current password",
+      "new": "New password",
+      "confirm": "Confirm new password",
+      "newPlaceholder": "Min. 8 characters",
+      "confirmPlaceholder": "Re-enter new password",
+      "change": "Change password",
+      "changing": "Changing…"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "desc": "Control how and when Docna contacts you",
+      "items": [
+        { "label": "Document processing complete", "desc": "Notify when your uploads are ready to query" },
+        { "label": "Weekly usage summary", "desc": "Receive a weekly digest of your usage stats" },
+        { "label": "Product updates", "desc": "Hear about new features and improvements" }
+      ]
+    },
+    "danger": {
+      "title": "Danger zone",
+      "deleteAccount": "Delete account",
+      "warning": "Permanently delete your account and all documents. This action cannot be undone.",
+      "delete": "Delete"
+    },
+    "deleteAccountDialog": {
+      "title": "Delete account",
+      "body": "This will deactivate your account and sign you out immediately. You'll lose access to your documents and conversations.",
+      "bodyEmphasis": "This action cannot be undone.",
+      "confirmLabel": "Type {{word}} to confirm"
+    },
+    "toasts": {
+      "profileUpdated": "Profile updated",
+      "profileUpdateFailed": "Failed to update profile",
+      "passwordChanged": "Password changed",
+      "passwordChangeFailed": "Failed to change password",
+      "accountDeleted": "Account deleted",
+      "accountDeleteFailed": "Failed to delete account"
+    }
+  },
+  "billing": {
+    "title": "Billing",
+    "subtitle": "Manage your subscription and usage",
+    "currentPlan": "Current plan",
+    "active": "Active",
+    "cancelsOn": "Cancels on {{date}}",
+    "renewsOn": "Renews {{date}}",
+    "manageSubscription": "Manage subscription",
+    "usageTitle": "Usage this period",
+    "documents": "Documents",
+    "queries": "Queries",
+    "storage": "Storage",
+    "plansHeading": "Plans",
+    "perInterval": "/{{interval}}",
+    "upgrade": "Upgrade",
+    "switchPlan": "Switch",
+    "endingWarning": {
+      "title": "Subscription ending",
+      "body": "Your subscription is set to cancel at the end of the current period. You'll retain access until then.",
+      "resume": "Resume subscription"
+    },
+    "toasts": {
+      "checkoutFailed": "Failed to open checkout",
+      "portalFailed": "Failed to open billing portal"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page not found",
+      "body": "The page you're looking for doesn't exist or may have been moved.",
+      "backHome": "Back to home"
+    },
+    "generic": {
+      "title": "Something went wrong",
+      "body": "An unexpected error occurred. Try reloading the page, or head back home.",
+      "reload": "Reload page",
+      "backHome": "Back to home"
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "We'd love to hear from you — reach out and we'll get back to you shortly.",
+    "sales": {
+      "title": "Sales & Enterprise",
+      "body": "Interested in Enterprise features, custom models, or SSO? Talk to our sales team.",
+      "cta": "Email sales"
+    },
+    "support": {
+      "title": "Support",
+      "body": "Running into an issue with your account or a document? We're here to help.",
+      "cta": "Email support"
+    },
+    "backHome": "Back to home"
+  },
+  "legal": {
+    "backHome": "Back to home",
+    "lastUpdated": "Last updated: {{date}}",
+    "privacy": {
+      "title": "Privacy Policy",
+      "intro": "This policy explains what information Docna collects, how it's used, and the choices you have. It applies to everyone who uses the Docna service.",
+      "sections": [
+        { "heading": "Information we collect", "body": "Account details you provide (name, email), the documents you upload, and basic usage data (like query counts) needed to operate and improve the service." },
+        { "heading": "How we use your information", "body": "To provide the core service — indexing your documents and answering your questions — as well as for billing, account support, and service reliability." },
+        { "heading": "Document processing & AI", "body": "Uploaded documents are processed to generate embeddings and retrieve relevant passages for your questions. Your documents are never used to train shared or third-party models." },
+        { "heading": "Data sharing", "body": "We don't sell your data. We share the minimum necessary information with service providers — such as our LLM, storage, and payment processors — solely to operate Docna, under contractual confidentiality." },
+        { "heading": "Data retention & deletion", "body": "Your documents and conversations are retained while your account is active. Deleting a document or your account permanently removes the associated data from our systems." },
+        { "heading": "Security", "body": "Data is encrypted in transit and at rest. Access to your documents is restricted to your account and to the automated processes that answer your questions." },
+        { "heading": "Your rights", "body": "You can access, export, or delete your data at any time from your account settings, or by contacting us directly." },
+        { "heading": "Changes to this policy", "body": "If we make material changes to this policy, we'll notify you by email or through the product before they take effect." }
+      ],
+      "contactPrompt": "Questions about this policy?",
+      "contactLink": "Contact us"
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "intro": "These terms govern your use of Docna. By creating an account or using the service, you agree to them.",
+      "sections": [
+        { "heading": "Using Docna", "body": "You must be able to form a binding contract to use Docna, and you're responsible for the activity that happens under your account." },
+        { "heading": "Subscriptions & billing", "body": "Paid plans renew automatically for each billing period until cancelled. You can cancel anytime from Billing; you'll retain access until the end of the current period." },
+        { "heading": "Acceptable use", "body": "Don't upload content you don't have the right to share, and don't use Docna to violate the law or the rights of others, or to abuse or overload the service." },
+        { "heading": "Your content", "body": "You own the documents you upload. You grant Docna a limited license to process them solely to provide the service to you — nothing more." },
+        { "heading": "AI-generated answers", "body": "Answers are generated by AI and grounded in your documents, but may still be incomplete or inaccurate. Always verify anything important." },
+        { "heading": "Disclaimers & liability", "body": "Docna is provided \"as is,\" without warranties of any kind. To the extent permitted by law, Docna isn't liable for indirect or consequential damages arising from your use of the service." },
+        { "heading": "Termination", "body": "You may stop using Docna and delete your account at any time. We may suspend or terminate accounts that violate these terms." },
+        { "heading": "Changes to these terms", "body": "We may update these terms from time to time; continued use of Docna after a change means you accept the updated terms." }
+      ],
+      "contactPrompt": "Questions about these terms?",
+      "contactLink": "Contact us"
+    }
+  }
+}

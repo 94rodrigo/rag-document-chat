@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Light mode ─────────────────────────────────── */
+    --bg-base:     35 20% 96%;
+    --bg-surface:  0 0% 100%;
+    --bg-elevated: 35 15% 93%;
+    --bg-overlay:  35 12% 89%;
+
+    --accent:          38 82% 44%;
+    --accent-dim:      38 82% 44%;
+    --accent-border:   38 82% 44%;
+    --accent-foreground: 0 0% 100%;
+
+    --border:        35 12% 85%;
+    --border-subtle: 35 10% 91%;
+
+    --text-primary:   25 15% 10%;
+    --text-secondary: 25 8%  42%;
+    --text-tertiary:  25 6%  62%;
+
+    /* shadcn compat */
+    --background:   35 20% 96%;
+    --foreground:   25 15% 10%;
+    --card:         0 0% 100%;
+    --card-foreground: 25 15% 10%;
+    --popover:      0 0% 100%;
+    --popover-foreground: 25 15% 10%;
+    --primary:      38 82% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary:    35 12% 89%;
+    --secondary-foreground: 25 15% 10%;
+    --muted:        35 12% 89%;
+    --muted-foreground: 25 8% 42%;
+    --destructive:  0 80% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --input:        35 12% 85%;
+    --ring:         38 82% 44%;
+    --radius:       0.5rem;
+  }
+
+  .dark {
+    /* ── Dark mode ──────────────────────────────────── */
+    --bg-base:     240 5% 4%;
+    --bg-surface:  240 5% 7%;
+    --bg-elevated: 240 4% 10%;
+    --bg-overlay:  240 4% 13%;
+
+    --accent:          38 78% 62%;
+    --accent-dim:      38 78% 62%;
+    --accent-border:   38 78% 62%;
+    --accent-foreground: 240 5% 4%;
+
+    --border:        240 4% 17%;
+    --border-subtle: 240 4% 12%;
+
+    --text-primary:   35 15% 94%;
+    --text-secondary: 35 6%  55%;
+    --text-tertiary:  35 4%  35%;
+
+    /* shadcn compat */
+    --background:   240 5% 4%;
+    --foreground:   35 15% 94%;
+    --card:         240 5% 7%;
+    --card-foreground: 35 15% 94%;
+    --popover:      240 5% 7%;
+    --popover-foreground: 35 15% 94%;
+    --primary:      38 78% 62%;
+    --primary-foreground: 240 5% 4%;
+    --secondary:    240 4% 13%;
+    --secondary-foreground: 35 15% 94%;
+    --muted:        240 4% 13%;
+    --muted-foreground: 35 6% 55%;
+    --destructive:  0 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --input:        240 4% 17%;
+    --ring:         38 78% 62%;
+    --radius:       0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    font-feature-settings: "kern", "liga", "calt";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-base text-text-primary font-sans;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.25);
+    color: hsl(var(--text-primary));
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: hsl(var(--border));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--text-tertiary));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Grain texture overlay */
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--accent)), hsl(38 90% 75%));
+  }
+
+  /* Glow effect on accent elements */
+  .accent-glow {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.15), 0 0 60px hsl(var(--accent) / 0.05);
+  }
+
+  /* Frosted glass */
+  .glass {
+    backdrop-filter: blur(12px) saturate(1.4);
+    -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  }
+
+  /* Typing cursor */
+  .typing-cursor::after {
+    content: '▋';
+    @apply animate-cursor-blink text-accent ml-0.5;
+  }
+
+  /* Markdown prose styles */
+  .prose-docna {
+    @apply text-text-primary leading-relaxed;
+  }
+  .prose-docna h1, .prose-docna h2, .prose-docna h3 {
+    @apply font-display text-text-primary mt-4 mb-2;
+  }
+  .prose-docna p {
+    @apply mb-3 last:mb-0;
+  }
+  .prose-docna code {
+    @apply font-mono text-accent bg-elevated px-1.5 py-0.5 rounded text-[0.8em];
+  }
+  .prose-docna pre {
+    @apply bg-elevated border border-border rounded-lg p-4 overflow-x-auto my-3;
+  }
+  .prose-docna pre code {
+    @apply bg-transparent p-0 text-text-primary;
+  }
+  .prose-docna ul, .prose-docna ol {
+    @apply pl-5 mb-3 space-y-1;
+  }
+  .prose-docna ul { list-style-type: disc; }
+  .prose-docna ol { list-style-type: decimal; }
+  .prose-docna blockquote {
+    @apply border-l-2 border-accent pl-4 italic text-text-secondary my-3;
+  }
+  .prose-docna a {
+    @apply text-accent underline underline-offset-2 hover:no-underline;
+  }
+  .prose-docna strong {
+    @apply font-semibold text-text-primary;
+  }
+  .prose-docna hr {
+    @apply border-border my-4;
+  }
+  .prose-docna table {
+    @apply w-full border-collapse text-sm my-3;
+  }
+  .prose-docna th {
+    @apply border border-border bg-elevated px-3 py-1.5 text-left font-medium text-text-secondary;
+  }
+  .prose-docna td {
+    @apply border border-border px-3 py-1.5;
+  }
+
+  /* Citation superscript */
+  .citation-ref {
+    @apply inline-flex items-center justify-center w-4 h-4 text-[10px] font-mono font-medium
+           bg-accent/15 text-accent border border-accent/30 rounded
+           cursor-pointer hover:bg-accent/25 transition-colors ml-0.5 -translate-y-1;
+  }
+
+  /* PDF citation highlight — marks the cited passage inside the rendered page */
+  mark.pdf-highlight {
+    background-color: hsl(var(--accent) / 0.35);
+    color: transparent;
+    border-radius: 2px;
+    box-shadow: 0 0 0 2px hsl(var(--accent) / 0.35);
+  }
+}

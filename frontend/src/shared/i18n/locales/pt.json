@@ -1,0 +1,423 @@
+{
+  "common": {
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "deleting": "Excluindo…",
+    "save": "Salvar",
+    "download": "Baixar",
+    "user": "Usuário"
+  },
+  "nav": {
+    "dashboard": "Painel",
+    "documents": "Documentos",
+    "billing": "Faturamento",
+    "settings": "Configurações",
+    "profile": "Perfil",
+    "signOut": "Sair"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "landing": {
+    "nav": {
+      "features": "Recursos",
+      "pricing": "Preços",
+      "signIn": "Entrar",
+      "startFree": "Começar grátis"
+    },
+    "hero": {
+      "badge": "Agora com respostas em tempo real",
+      "titlePart1": "Seus documentos,",
+      "titleEmphasis": "inteligentemente",
+      "titlePart2": "respondidos",
+      "subtitle": "Envie qualquer documento. Faça qualquer pergunta. Obtenha respostas precisas e citadas, baseadas exatamente nos parágrafos que importam.",
+      "getStarted": "Comece grátis",
+      "signIn": "Entrar"
+    },
+    "demo": {
+      "documentsLabel": "Documentos",
+      "documents": ["Relatório Anual 2024", "Teleconferência do 3º Trimestre", "Registro SEC 10-K", "Ata do Conselho"],
+      "question": "Qual foi o crescimento total da receita em comparação com 2023?",
+      "answer": "A receita total cresceu {{growth}} em relação ao ano anterior, atingindo {{current}} no exercício de 2024, contra {{previous}} em 2023.",
+      "answerContinued": "Isso foi impulsionado principalmente pelas assinaturas corporativas",
+      "inputPlaceholder": "Pergunte qualquer coisa sobre seus documentos…"
+    },
+    "features": {
+      "eyebrow": "Por que Docna",
+      "heading": "Feito para trabalho sério com documentos",
+      "items": [
+        { "title": "Busca semântica", "desc": "A busca vetorial encontra as passagens mais relevantes entre milhares de páginas em milissegundos." },
+        { "title": "Respostas em tempo real", "desc": "Respostas de IA em tempo real com fontes citadas, para você rastrear cada afirmação até o documento." },
+        { "title": "Processamento instantâneo", "desc": "Envie PDFs, documentos do Word ou texto simples — eles são indexados e prontos para consulta em segundos." },
+        { "title": "Privado por padrão", "desc": "Seus documentos continuam seus. Criptografia de ponta a ponta, compatível com SOC 2, sem treinamento de dados." }
+      ]
+    },
+    "pricing": {
+      "eyebrow": "Preços",
+      "heading": "Preços simples e honestos",
+      "mostPopular": "Mais popular",
+      "perMonth": "/mês",
+      "customPricing": "Preço personalizado",
+      "plans": [
+        { "name": "Grátis", "cta": "Começar", "features": ["10 documentos", "100 consultas/mês", "50 MB de armazenamento", "Suporte da comunidade"] },
+        { "name": "Pro", "cta": "Iniciar teste grátis", "features": ["Documentos ilimitados", "2.000 consultas/mês", "10 GB de armazenamento", "Suporte prioritário", "Acesso à API"] },
+        { "name": "Enterprise", "cta": "Fale conosco", "features": ["Tudo ilimitado", "Modelos personalizados", "SSO / SAML", "Suporte dedicado", "Garantia de SLA"] }
+      ]
+    },
+    "cta": {
+      "heading": "Comece a fazer perguntas melhores",
+      "body": "Junte-se a pesquisadores, advogados e analistas que usam o Docna para desbloquear o conhecimento em seus documentos.",
+      "button": "Comece grátis — sem cartão necessário"
+    },
+    "footer": {
+      "rights": "© {{year}} Docna. Todos os direitos reservados.",
+      "privacy": "Privacidade",
+      "terms": "Termos"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Bem-vindo de volta",
+      "subtitle": "Entre na sua conta Docna",
+      "email": "E-mail",
+      "emailPlaceholder": "voce@exemplo.com",
+      "password": "Senha",
+      "forgotPassword": "Esqueceu a senha?",
+      "signIn": "Entrar",
+      "signingIn": "Entrando…",
+      "invalidCredentials": "Credenciais inválidas",
+      "noAccount": "Não tem uma conta?",
+      "createOne": "Criar uma"
+    },
+    "register": {
+      "title": "Criar conta",
+      "subtitle": "Comece a consultar seus documentos em minutos",
+      "fullName": "Nome completo",
+      "fullNamePlaceholder": "Seu nome",
+      "email": "E-mail",
+      "emailPlaceholder": "voce@exemplo.com",
+      "password": "Senha",
+      "passwordPlaceholder": "Mín. 8 caracteres",
+      "confirmPassword": "Confirmar senha",
+      "confirmPasswordPlaceholder": "Digite a senha novamente",
+      "createAccount": "Criar conta",
+      "creatingAccount": "Criando conta…",
+      "agreementPrefix": "Ao criar uma conta, você concorda com nossos",
+      "agreementAnd": "e",
+      "terms": "Termos",
+      "privacyPolicy": "Política de Privacidade",
+      "haveAccount": "Já tem uma conta?",
+      "signIn": "Entrar"
+    },
+    "validation": {
+      "invalidEmail": "Endereço de e-mail inválido",
+      "passwordRequired": "A senha é obrigatória",
+      "currentPasswordRequired": "A senha atual é obrigatória",
+      "nameMin": "O nome deve ter pelo menos 2 caracteres",
+      "passwordMin": "A senha deve ter pelo menos 8 caracteres",
+      "passwordUppercase": "Deve conter uma letra maiúscula",
+      "passwordNumber": "Deve conter um número",
+      "passwordsMismatch": "As senhas não coincidem"
+    },
+    "toasts": {
+      "loginFailed": "Falha ao entrar",
+      "registrationFailed": "Falha no cadastro"
+    },
+    "forgotPasswordPage": {
+      "title": "Redefinir sua senha",
+      "body": "A redefinição de senha por e-mail ainda não está disponível de forma automática.",
+      "loggedInHint": "Se você ainda consegue entrar, pode alterar sua senha a qualquer momento em Configurações.",
+      "goToSettings": "Ir para Configurações",
+      "supportHint": "Caso contrário, entre em contato com o suporte e ajudaremos você a recuperar o acesso.",
+      "contactSupport": "Contatar suporte",
+      "backToSignIn": "Voltar para o login"
+    }
+  },
+  "authLayout": {
+    "rights": "© {{year}} Docna",
+    "privacy": "Privacidade",
+    "terms": "Termos"
+  },
+  "sidebar": {
+    "newConversation": "Nova conversa",
+    "uploadDocument": "Enviar documento",
+    "dropToUpload": "Solte para enviar",
+    "uploading": "Enviando",
+    "processing": "Processando…",
+    "documents": "Documentos",
+    "conversations": "Conversas",
+    "noDocuments": "Nenhum documento ainda",
+    "moreDocuments": "+{{count}} mais →",
+    "showMore": "Mostrar mais {{count}}",
+    "showLess": "Mostrar menos",
+    "deleteDocumentAria": "Excluir {{name}}",
+    "deleteConversationAria": "Excluir {{name}}"
+  },
+  "dashboard": {
+    "profileBanner": {
+      "prefix": "Complete seu perfil —",
+      "link": "adicione seu nome",
+      "suffix": "para que sua conta pareça sua."
+    },
+    "emptyState": {
+      "noDocuments": {
+        "title": "Nenhum documento ainda",
+        "body": "Envie um PDF, documento do Word ou arquivo de texto para começar a fazer perguntas sobre o conteúdo.",
+        "upload": "Enviar documento"
+      },
+      "withDocuments": {
+        "title": "Inicie uma conversa",
+        "body": "Pergunte qualquer coisa sobre seus documentos. O Docna recupera as passagens relevantes e cita cada fonte."
+      }
+    },
+    "suggestedPrompts": [
+      "Quais são os principais temas e conceitos abordados?",
+      "Quais são as principais conclusões?",
+      "O que o autor argumenta ou defende?",
+      "Quais perguntas este documento responde?"
+    ],
+    "inputPlaceholder": {
+      "withConversation": "Pergunte qualquer coisa sobre seus documentos… (↵ para enviar, Shift+↵ para nova linha)",
+      "noConversation": "Selecione um documento na barra lateral para iniciar uma conversa"
+    },
+    "disclaimer": "As respostas são baseadas nos seus documentos. Sempre verifique informações importantes.",
+    "sources": {
+      "title": "Fontes",
+      "empty": "Nenhuma fonte ainda",
+      "emptyBody": "As passagens de origem aparecerão aqui depois que você fizer uma pergunta",
+      "relevanceHint": "As pontuações de relevância mostram o quão próxima cada passagem está da sua pergunta"
+    }
+  },
+  "documents": {
+    "title": "Documentos",
+    "count_one": "{{count}} documento",
+    "count_other": "{{count}} documentos",
+    "searchPlaceholder": "Buscar documentos…",
+    "upload": "Enviar",
+    "dropToUpload": "Solte os arquivos para enviar",
+    "uploading": "Enviando",
+    "processing": "Processando…",
+    "noMatches": "Nenhum resultado encontrado",
+    "noDocuments": "Nenhum documento ainda",
+    "noMatchesFor": "Nenhum documento corresponde a \"{{search}}\"",
+    "noDocumentsBody": "Envie um PDF, documento do Word ou arquivo de texto para começar a fazer perguntas sobre o conteúdo.",
+    "clearSearch": "Limpar busca",
+    "uploadFirst": "Envie seu primeiro documento",
+    "status": {
+      "ready": "Pronto",
+      "processing": "Processando",
+      "uploading": "Enviando",
+      "error": "Erro"
+    },
+    "askQuestions": "Fazer perguntas",
+    "pages_one": "{{count}} página",
+    "pages_other": "{{count}} páginas",
+    "viewDocument": "Ver documento",
+    "deleteDocument": "Excluir documento",
+    "notFound": "Documento não encontrado",
+    "backToDocuments": "Voltar aos documentos",
+    "preview": "Pré-visualização",
+    "indexedChunks": "Trechos indexados",
+    "previewFailed": "Falha ao carregar a pré-visualização do PDF.",
+    "downloadInstead": "Baixar em vez disso",
+    "previewUnavailable": "Pré-visualização não disponível para este tipo de arquivo.",
+    "chatInstead": "Conversar com este documento em vez disso",
+    "noChunks": "Nenhum trecho disponível.",
+    "stillIndexing": "O documento ainda está sendo indexado…",
+    "chunk": "TRECHO {{index}}",
+    "viewFullDocument": "Ver documento completo",
+    "highlightHint": "A passagem citada está destacada nesta página.",
+    "deleteDialog": {
+      "title": "Excluir documento",
+      "body": "Isso excluirá permanentemente o documento e todo o seu conteúdo indexado. As conversas que usam este documento perderão acesso ao seu contexto.",
+      "bodyEmphasis": "Esta ação não pode ser desfeita."
+    },
+    "sourceCard": {
+      "showMore": "Mostrar mais",
+      "showLess": "Mostrar menos",
+      "open": "Abrir"
+    },
+    "toasts": {
+      "deleted": "Documento excluído",
+      "deleteFailed": "Falha ao excluir o documento",
+      "uploadFailed": "Falha no envio"
+    }
+  },
+  "chat": {
+    "newConversation": {
+      "title": "Nova conversa",
+      "description": "Selecione um ou mais documentos para incluir nesta conversa.",
+      "noDocuments": "Nenhum documento indexado ainda. Envie e aguarde o processamento terminar.",
+      "selectAll": "Selecionar tudo",
+      "deselectAll": "Desmarcar tudo",
+      "starting": "Iniciando…",
+      "start": "Iniciar conversa"
+    },
+    "deleteDialog": {
+      "title": "Excluir conversa",
+      "body": "Isso excluirá permanentemente a conversa e todas as suas mensagens.",
+      "bodyEmphasis": "Esta ação não pode ser desfeita."
+    },
+    "queryBox": {
+      "placeholder": "Pergunte qualquer coisa sobre seus documentos…",
+      "stopGeneration": "Parar geração",
+      "send": "Enviar (↵)",
+      "messageInput": "Campo de mensagem"
+    },
+    "toasts": {
+      "couldNotStart": "Não foi possível iniciar a conversa",
+      "couldNotDelete": "Não foi possível excluir a conversa",
+      "failedResponse": "Falha ao obter uma resposta"
+    }
+  },
+  "settings": {
+    "title": "Configurações",
+    "subtitle": "Gerencie sua conta e preferências",
+    "profile": {
+      "title": "Perfil",
+      "desc": "Suas informações pessoais e nome de exibição",
+      "fullName": "Nome completo",
+      "email": "Endereço de e-mail",
+      "emailHint": "Entre em contato com o suporte para alterar seu e-mail",
+      "save": "Salvar alterações",
+      "saving": "Salvando…"
+    },
+    "appearance": {
+      "title": "Aparência",
+      "desc": "Escolha seu tema de cores preferido",
+      "dark": "Escuro",
+      "light": "Claro",
+      "system": "Sistema"
+    },
+    "password": {
+      "title": "Senha",
+      "desc": "Atualize a senha da sua conta",
+      "current": "Senha atual",
+      "new": "Nova senha",
+      "confirm": "Confirmar nova senha",
+      "newPlaceholder": "Mín. 8 caracteres",
+      "confirmPlaceholder": "Digite a nova senha novamente",
+      "change": "Alterar senha",
+      "changing": "Alterando…"
+    },
+    "notifications": {
+      "title": "Notificações",
+      "desc": "Controle como e quando o Docna entra em contato com você",
+      "items": [
+        { "label": "Processamento de documento concluído", "desc": "Avisar quando seus envios estiverem prontos para consulta" },
+        { "label": "Resumo semanal de uso", "desc": "Receber um resumo semanal das suas estatísticas de uso" },
+        { "label": "Novidades do produto", "desc": "Saiba sobre novos recursos e melhorias" }
+      ]
+    },
+    "danger": {
+      "title": "Zona de risco",
+      "deleteAccount": "Excluir conta",
+      "warning": "Exclui permanentemente sua conta e todos os documentos. Esta ação não pode ser desfeita.",
+      "delete": "Excluir"
+    },
+    "deleteAccountDialog": {
+      "title": "Excluir conta",
+      "body": "Isso desativará sua conta e encerrará sua sessão imediatamente. Você perderá o acesso aos seus documentos e conversas.",
+      "bodyEmphasis": "Esta ação não pode ser desfeita.",
+      "confirmLabel": "Digite {{word}} para confirmar"
+    },
+    "toasts": {
+      "profileUpdated": "Perfil atualizado",
+      "profileUpdateFailed": "Falha ao atualizar o perfil",
+      "passwordChanged": "Senha alterada",
+      "passwordChangeFailed": "Falha ao alterar a senha",
+      "accountDeleted": "Conta excluída",
+      "accountDeleteFailed": "Falha ao excluir a conta"
+    }
+  },
+  "billing": {
+    "title": "Faturamento",
+    "subtitle": "Gerencie sua assinatura e uso",
+    "currentPlan": "Plano atual",
+    "active": "Ativo",
+    "cancelsOn": "Cancela em {{date}}",
+    "renewsOn": "Renova em {{date}}",
+    "manageSubscription": "Gerenciar assinatura",
+    "usageTitle": "Uso neste período",
+    "documents": "Documentos",
+    "queries": "Consultas",
+    "storage": "Armazenamento",
+    "plansHeading": "Planos",
+    "perInterval": "/{{interval}}",
+    "upgrade": "Fazer upgrade",
+    "switchPlan": "Trocar",
+    "endingWarning": {
+      "title": "Assinatura encerrando",
+      "body": "Sua assinatura está definida para cancelar no fim do período atual. Você manterá o acesso até lá.",
+      "resume": "Reativar assinatura"
+    },
+    "toasts": {
+      "checkoutFailed": "Falha ao abrir o checkout",
+      "portalFailed": "Falha ao abrir o portal de faturamento"
+    }
+  },
+  "errors": {
+    "notFound": {
+      "title": "Página não encontrada",
+      "body": "A página que você procura não existe ou pode ter sido movida.",
+      "backHome": "Voltar ao início"
+    },
+    "generic": {
+      "title": "Algo deu errado",
+      "body": "Ocorreu um erro inesperado. Tente recarregar a página ou volte ao início.",
+      "reload": "Recarregar página",
+      "backHome": "Voltar ao início"
+    }
+  },
+  "contact": {
+    "title": "Fale conosco",
+    "subtitle": "Adoraríamos ouvir você — entre em contato e responderemos em breve.",
+    "sales": {
+      "title": "Vendas e Enterprise",
+      "body": "Interessado nos recursos Enterprise, modelos personalizados ou SSO? Fale com nosso time de vendas.",
+      "cta": "E-mail para vendas"
+    },
+    "support": {
+      "title": "Suporte",
+      "body": "Está com algum problema na sua conta ou em um documento? Estamos aqui para ajudar.",
+      "cta": "E-mail para suporte"
+    },
+    "backHome": "Voltar ao início"
+  },
+  "legal": {
+    "backHome": "Voltar ao início",
+    "lastUpdated": "Última atualização: {{date}}",
+    "privacy": {
+      "title": "Política de Privacidade",
+      "intro": "Esta política explica quais informações o Docna coleta, como são usadas e quais escolhas você tem. Ela se aplica a todos que usam o serviço Docna.",
+      "sections": [
+        { "heading": "Informações que coletamos", "body": "Dados da conta que você fornece (nome, e-mail), os documentos que você envia e dados básicos de uso (como número de consultas) necessários para operar e melhorar o serviço." },
+        { "heading": "Como usamos suas informações", "body": "Para fornecer o serviço principal — indexar seus documentos e responder às suas perguntas —, além de faturamento, suporte à conta e confiabilidade do serviço." },
+        { "heading": "Processamento de documentos e IA", "body": "Os documentos enviados são processados para gerar embeddings e recuperar as passagens relevantes para suas perguntas. Seus documentos nunca são usados para treinar modelos compartilhados ou de terceiros." },
+        { "heading": "Compartilhamento de dados", "body": "Não vendemos seus dados. Compartilhamos o mínimo necessário de informações com provedores de serviço — como nossos processadores de IA, armazenamento e pagamento — apenas para operar o Docna, sob confidencialidade contratual." },
+        { "heading": "Retenção e exclusão de dados", "body": "Seus documentos e conversas são mantidos enquanto sua conta estiver ativa. Excluir um documento ou sua conta remove permanentemente os dados associados de nossos sistemas." },
+        { "heading": "Segurança", "body": "Os dados são criptografados em trânsito e em repouso. O acesso aos seus documentos é restrito à sua conta e aos processos automatizados que respondem às suas perguntas." },
+        { "heading": "Seus direitos", "body": "Você pode acessar, exportar ou excluir seus dados a qualquer momento nas configurações da sua conta, ou entrando em contato conosco diretamente." },
+        { "heading": "Alterações nesta política", "body": "Se fizermos alterações significativas nesta política, avisaremos por e-mail ou pelo produto antes que entrem em vigor." }
+      ],
+      "contactPrompt": "Dúvidas sobre esta política?",
+      "contactLink": "Fale conosco"
+    },
+    "terms": {
+      "title": "Termos de Serviço",
+      "intro": "Estes termos regem o uso do Docna. Ao criar uma conta ou usar o serviço, você concorda com eles.",
+      "sections": [
+        { "heading": "Uso do Docna", "body": "Você deve ter capacidade legal para firmar um contrato vinculante para usar o Docna, e é responsável pela atividade realizada em sua conta." },
+        { "heading": "Assinaturas e faturamento", "body": "Os planos pagos renovam automaticamente a cada período de cobrança até serem cancelados. Você pode cancelar a qualquer momento em Faturamento; manterá o acesso até o fim do período atual." },
+        { "heading": "Uso aceitável", "body": "Não envie conteúdo sobre o qual você não tenha direito de compartilhar, e não use o Docna para violar a lei ou os direitos de terceiros, nem para abusar ou sobrecarregar o serviço." },
+        { "heading": "Seu conteúdo", "body": "Você é o proprietário dos documentos que envia. Você concede ao Docna uma licença limitada para processá-los unicamente para fornecer o serviço a você — nada além disso." },
+        { "heading": "Respostas geradas por IA", "body": "As respostas são geradas por IA e baseadas nos seus documentos, mas ainda podem ser incompletas ou imprecisas. Sempre verifique o que for importante." },
+        { "heading": "Isenções e responsabilidade", "body": "O Docna é fornecido \"como está\", sem garantias de qualquer tipo. Na medida permitida por lei, o Docna não é responsável por danos indiretos ou consequenciais decorrentes do uso do serviço." },
+        { "heading": "Encerramento", "body": "Você pode parar de usar o Docna e excluir sua conta a qualquer momento. Podemos suspender ou encerrar contas que violem estes termos." },
+        { "heading": "Alterações nestes termos", "body": "Podemos atualizar estes termos periodicamente; o uso contínuo do Docna após uma alteração significa que você aceita os termos atualizados." }
+      ],
+      "contactPrompt": "Dúvidas sobre estes termos?",
+      "contactLink": "Fale conosco"
+    }
+  }
+}
