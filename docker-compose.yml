@@ -1,7 +1,11 @@
 # Credential/env defaults below (docna/docna, minioadmin/minioadmin, empty
 # Flower auth) are for local development only — this file has no separate
-# production variant, so override via a .env next to this file (or real env
-# vars) before ever pointing it at anything but localhost.
+# production variant, so override before ever pointing it at anything but
+# localhost.
+#
+# The env file lives at backend/.env (shared with native/non-Docker dev), not
+# next to this file, so Compose won't auto-load it for ${VAR} substitution
+# below. Pass it explicitly: `docker compose --env-file backend/.env up -d`.
 
 # Shared by api and worker: env_file supplies secrets (API keys, JWT secret,
 # Stripe keys, ...); this override block wins over whatever .env has for the
@@ -25,7 +29,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docna}
       POSTGRES_DB: ${POSTGRES_DB:-docna}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
@@ -38,7 +42,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     ports:
-      - "6379:6379"
+      - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis_data:/data
     healthcheck:
@@ -67,11 +71,11 @@ services:
 
   api:
     build:
-      context: .
+      context: ./backend
       dockerfile: docker/Dockerfile
       target: api
     restart: unless-stopped
-    env_file: .env
+    env_file: backend/.env
     environment:
       <<: *backend-env
     ports:
@@ -84,15 +88,15 @@ services:
       minio:
         condition: service_healthy
     volumes:
-      - ./app:/app/app  # picked up live — the api image reloads unless APP_ENV=production
+      - ./backend/app:/app/app  # picked up live — the api image reloads unless APP_ENV=production
 
   worker:
     build:
-      context: .
+      context: ./backend
       dockerfile: docker/Dockerfile
       target: worker
     restart: unless-stopped
-    env_file: .env
+    env_file: backend/.env
     environment:
       <<: *backend-env
     depends_on:
@@ -103,7 +107,7 @@ services:
       minio:
         condition: service_healthy
     volumes:
-      - ./app:/app/app  # picked up on worker restart (celery doesn't autoreload)
+      - ./backend/app:/app/app  # picked up on worker restart (celery doesn't autoreload)
 
   flower:
     image: mher/flower:2.0
@@ -121,7 +125,7 @@ services:
 
   frontend:
     build:
-      context: ../frontend
+      context: ./frontend
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:

@@ -126,11 +126,16 @@ expensive model re-scores only those, returning the top 6 to the LLM.
 ### With Docker (everything, one command)
 
 ```bash
-git clone <your-repo-url> docna && cd docna/backend
-cp .env.example .env          # add your OPENAI_API_KEY
-docker compose up -d
+git clone <your-repo-url> docna && cd docna
+cp backend/.env.example backend/.env   # add your OPENAI_API_KEY
+docker compose --env-file backend/.env up -d
 docker compose exec api alembic upgrade head
 ```
+
+> `docker-compose.yml` lives at the repo root since it orchestrates both `backend/` and
+> `frontend/`. Its env values live at `backend/.env` (shared with native/non-Docker dev below)
+> rather than next to the compose file, so `--env-file backend/.env` is needed on `up` for
+> Compose to pick up overrides like `POSTGRES_PORT` — see the Configuration section.
 
 | Service | URL |
 |---|---|
@@ -145,7 +150,7 @@ doesn't autoreload. For faster frontend iteration without a rebuild on every sav
 Docker instead:
 
 ```bash
-cd ../frontend
+cd frontend
 npm install
 npm run dev                   # http://localhost:5173, proxies /api to localhost:8000
 ```
@@ -155,6 +160,20 @@ npm run dev                   # http://localhost:5173, proxies /api to localhost
 > `docker compose down`. The bundled MinIO service is already wired up (`S3_ENDPOINT_URL` points
 > at it inside the compose network); set `STORAGE_PROVIDER=minio` in `.env` for storage that
 > persists across restarts.
+
+#### Creating an admin user
+
+```bash
+docker compose exec api python -m scripts.create_admin \
+  --email you@example.com --name "Your Name" --password "YourPass1"
+```
+
+Grants an enterprise-plan user with unlimited documents, queries, and storage. Run it as a
+module (`-m scripts.create_admin`), not `python scripts/create_admin.py` — the image installs
+the app straight into the system Python with no virtualenv, and invoking the file by path leaves
+`/app` (where the `app` package lives) off `sys.path`, failing with `ModuleNotFoundError: No
+module named 'app'`. `-m` runs it with the container's working directory (`/app`) on the path
+instead, which resolves it.
 
 ### Running the backend locally
 
