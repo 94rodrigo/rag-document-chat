@@ -5,6 +5,7 @@ Files are stored under LOCAL_STORAGE_PATH (default: ./storage/).
 """
 from __future__ import annotations
 
+import contextlib
 import os
 from pathlib import Path
 from typing import BinaryIO
@@ -59,10 +60,8 @@ class LocalStorageService:
         if path.exists():
             path.unlink()
             # Clean up empty parent directories
-            try:
+            with contextlib.suppress(OSError):
                 path.parent.rmdir()
-            except OSError:
-                pass
         log.info("local_storage.delete_ok", key=key)
 
     async def generate_presigned_url(self, key: str, expiry_seconds: int = 3600) -> str:

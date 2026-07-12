@@ -70,6 +70,8 @@ export function SettingsPage() {
     onError: () => toast.error(t('settings.toasts.profileUpdateFailed')),
   })
 
+  // i18n.language rebuilds the schema with translated error messages on a language switch.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const changePasswordSchema = useMemo(() => makeChangePasswordSchema(t), [t, i18n.language])
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } =

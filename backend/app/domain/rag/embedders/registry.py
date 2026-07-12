@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 
 
 @lru_cache(maxsize=1)
-def get_embedder(settings: "Settings | None" = None) -> EmbedderProtocol:
+def get_embedder(settings: Settings | None = None) -> EmbedderProtocol:
     from app.config import get_settings
 
     s = settings or get_settings()

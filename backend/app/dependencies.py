@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Annotated
 
 import structlog
-from fastapi import Cookie, Depends, Header
+from fastapi import Depends
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession

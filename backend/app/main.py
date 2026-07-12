@@ -145,15 +145,18 @@ def create_app() -> FastAPI:
                 if auth != f"Bearer {metrics_token}":
                     return JSONResponse({"detail": "Unauthorized"}, status_code=401)
                 # Delegate to Instrumentator's internal endpoint
-                from prometheus_client import generate_latest, CONTENT_TYPE_LATEST
                 from fastapi.responses import Response as _Resp
+                from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
                 return _Resp(generate_latest(), media_type=CONTENT_TYPE_LATEST)
         else:
             # If no token configured: expose only in development
             if settings.is_development:
                 instrumentator.expose(app, endpoint="/metrics", include_in_schema=False)
             else:
-                log.warning("app.metrics_disabled", reason="METRICS_AUTH_TOKEN not set in production")
+                log.warning(
+                    "app.metrics_disabled",
+                    reason="METRICS_AUTH_TOKEN not set in production",
+                )
 
     except ImportError:
         pass

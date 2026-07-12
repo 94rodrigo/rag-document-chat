@@ -99,4 +99,4 @@ class HybridChunker:
 
 
 def _average_embeddings(a: list[float], b: list[float]) -> list[float]:
-    return [(x + y) / 2.0 for x, y in zip(a, b)]
+    return [(x + y) / 2.0 for x, y in zip(a, b, strict=False)]

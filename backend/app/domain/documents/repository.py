@@ -4,7 +4,6 @@ from typing import Any
 
 from sqlalchemy import func, select, update
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload
 
 from app.domain.documents.models import Document, DocumentChunk, DocumentStatus
 from app.shared.pagination import PaginationParams

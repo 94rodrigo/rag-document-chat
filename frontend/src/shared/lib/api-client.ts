@@ -238,7 +238,7 @@ export const chatApi = {
     request<Conversation & { messages: ChatMessage[] }>(`/conversations/${conversationId}`)
       .then((conv) => conv.messages ?? []),
 
-  sendMessage: (
+  sendMessage: async (
     conversationId: string,
     content: string,
     onChunk: (chunk: StreamChunk) => void,
@@ -255,61 +255,53 @@ export const chatApi = {
         signal,
       })
 
-    return new Promise(async (resolve, reject) => {
+    let res = await doFetch()
+
+    if (res.status === 401) {
       try {
-        let res = await doFetch()
-
-        if (res.status === 401) {
-          try {
-            await refreshAccessToken()
-          } catch {
-            redirectToLogin()
-            reject({ message: 'Session expired', statusCode: 401 })
-            return
-          }
-          res = await doFetch()
-        }
-
-        if (!res.ok || !res.body) {
-          reject({ message: 'Stream failed', statusCode: res.status })
-          return
-        }
-
-        const reader = res.body.getReader()
-        const decoder = new TextDecoder()
-        let finalMessage: ChatMessage | null = null
-        const citations: Citation[] = []
-
-        while (true) {
-          const { done, value } = await reader.read()
-          if (done) break
-
-          const lines = decoder.decode(value).split('\n')
-          for (const line of lines) {
-            if (!line.startsWith('data: ')) continue
-            const raw = line.slice(6).trim()
-            if (raw === '[DONE]') continue
-
-            try {
-              const chunk = transformKeys(JSON.parse(raw)) as StreamChunk
-              onChunk(chunk)
-              if (chunk.type === 'citation' && chunk.citation) {
-                citations.push(chunk.citation)
-              }
-              if (chunk.type === 'done' && chunk.content) {
-                finalMessage = transformKeys(JSON.parse(chunk.content)) as ChatMessage
-              }
-            } catch {
-              // malformed chunk — skip
-            }
-          }
-        }
-
-        resolve({ message: finalMessage!, citations })
-      } catch (err) {
-        reject(err)
+        await refreshAccessToken()
+      } catch {
+        redirectToLogin()
+        throw { message: 'Session expired', statusCode: 401 }
       }
-    })
+      res = await doFetch()
+    }
+
+    if (!res.ok || !res.body) {
+      throw { message: 'Stream failed', statusCode: res.status }
+    }
+
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    let finalMessage: ChatMessage | null = null
+    const citations: Citation[] = []
+
+    for (;;) {
+      const { done, value } = await reader.read()
+      if (done) break
+
+      const lines = decoder.decode(value).split('\n')
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue
+        const raw = line.slice(6).trim()
+        if (raw === '[DONE]') continue
+
+        try {
+          const chunk = transformKeys(JSON.parse(raw)) as StreamChunk
+          onChunk(chunk)
+          if (chunk.type === 'citation' && chunk.citation) {
+            citations.push(chunk.citation)
+          }
+          if (chunk.type === 'done' && chunk.content) {
+            finalMessage = transformKeys(JSON.parse(chunk.content)) as ChatMessage
+          }
+        } catch {
+          // malformed chunk — skip
+        }
+      }
+    }
+
+    return { message: finalMessage!, citations }
   },
 }
 

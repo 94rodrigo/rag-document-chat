@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from collections.abc import AsyncGenerator
-from typing import Any
 
 import structlog
 from tenacity import (
@@ -212,8 +211,9 @@ def get_embedder() -> EmbedderProtocol:
 def get_chat() -> ChatProtocol:
     global _chat
     if _chat is None:
-        if settings.llm_provider == LLMProvider.anthropic:
-            _chat = AnthropicChat()
-        else:
-            _chat = OpenAIChat()
+        _chat = (
+            AnthropicChat()
+            if settings.llm_provider == LLMProvider.anthropic
+            else OpenAIChat()
+        )
     return _chat

@@ -14,6 +14,8 @@ import { useRegister } from '../hooks/use-auth'
 export function RegisterPage() {
   const { t, i18n } = useTranslation()
   const register_ = useRegister()
+  // i18n.language rebuilds the schema with translated error messages on a language switch.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const registerSchema = useMemo(() => makeRegisterSchema(t), [t, i18n.language])
 
   const {

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from enum import StrEnum
 from typing import Any
 
@@ -229,7 +229,11 @@ def build_pipeline(
     cfg = config or _config_from_settings(settings)
     embedder = get_embedder()
     store = _build_store(settings, session)
-    reranker = CrossEncoderReranker(settings.rag_rerank_model) if settings.rag_rerank_enabled else None
+    reranker = (
+        CrossEncoderReranker(settings.rag_rerank_model)
+        if settings.rag_rerank_enabled
+        else None
+    )
 
     return RAGPipeline(
         config=cfg,

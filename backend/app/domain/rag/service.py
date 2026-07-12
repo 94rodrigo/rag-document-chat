@@ -191,7 +191,9 @@ class RAGService:
                 "id": saved_message.id,
                 "role": str(saved_message.role),
                 "content": full_answer,
-                "created_at": saved_message.created_at.isoformat() if saved_message.created_at else None,
+                "created_at": (
+                    saved_message.created_at.isoformat() if saved_message.created_at else None
+                ),
             }),
         )
 
@@ -220,7 +222,9 @@ class RAGService:
             )
 
         context_block = (
-            "\n\n".join(context_parts) if context_parts else "<document>No relevant context found.</document>"
+            "\n\n".join(context_parts)
+            if context_parts
+            else "<document>No relevant context found.</document>"
         )
 
         system_message = {
@@ -243,7 +247,8 @@ class RAGService:
                         "role": "system",
                         "content": (
                             "Generate a very short (max 8 words) title for a conversation "
-                            "that starts with the following query. Return only the title, no quotes."
+                            "that starts with the following query. "
+                            "Return only the title, no quotes."
                         ),
                     },
                     {"role": "user", "content": query[:500]},  # cap input length

@@ -6,7 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.domain.conversations.models import Citation, Conversation, Message, MessageRole
+from app.domain.conversations.models import Citation, Conversation, Message
 from app.shared.pagination import PaginationParams
 
 

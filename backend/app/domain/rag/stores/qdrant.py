@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
-from uuid import uuid5, NAMESPACE_DNS
+from uuid import NAMESPACE_DNS, uuid5
 
 import structlog
 
@@ -96,7 +96,11 @@ class QdrantStore:
         if not user_id:
             log.error("store.qdrant.empty_user_id_rejected")
             return []
-        from qdrant_client.models import Filter, FieldCondition, MatchAny  # type: ignore[import-untyped]
+        from qdrant_client.models import (  # type: ignore[import-untyped]
+            FieldCondition,
+            Filter,
+            MatchAny,
+        )
 
         query_filter = Filter(
             must=[
@@ -128,7 +132,11 @@ class QdrantStore:
         ]
 
     async def delete(self, document_id: str) -> None:
-        from qdrant_client.models import Filter, FieldCondition, MatchValue  # type: ignore[import-untyped]
+        from qdrant_client.models import (  # type: ignore[import-untyped]
+            FieldCondition,
+            Filter,
+            MatchValue,
+        )
 
         await self._client.delete(
             collection_name=self._collection,

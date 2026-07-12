@@ -272,7 +272,7 @@ class BillingService:
             )
         except stripe.error.SignatureVerificationError:
             log.warning("billing.webhook_invalid_signature")
-            raise ValueError("Invalid signature")
+            raise ValueError("Invalid signature") from None
 
         await self._dispatch_stripe_event(event)
 
@@ -305,7 +305,6 @@ class BillingService:
         stripe_sub = stripe.Subscription.retrieve(stripe_sub_id)
         sub = await self._subs.get_by_user(user_id)
 
-        from datetime import timezone as tz
         period_end = datetime.fromtimestamp(
             stripe_sub.current_period_end, tz=UTC
         ) if hasattr(stripe_sub, "current_period_end") else None

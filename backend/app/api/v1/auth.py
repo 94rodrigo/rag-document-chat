@@ -4,7 +4,8 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, Request, status
 
-from app.dependencies import CurrentUser, OptionalUser, get_auth_service
+from app.config import get_settings
+from app.dependencies import CurrentUser, get_auth_service
 from app.domain.auth.schemas import (
     AnonymousSessionResponse,
     AuthResponse,
@@ -15,8 +16,6 @@ from app.domain.auth.schemas import (
     UserResponse,
 )
 from app.domain.auth.service import AuthService
-from app.shared.utils import utc_now
-from app.config import get_settings
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 settings = get_settings()

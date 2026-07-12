@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from celery import Celery
-from celery.signals import setup_logging, worker_init, worker_ready
+from celery.signals import setup_logging, worker_ready
 
 from app.config import get_settings
 

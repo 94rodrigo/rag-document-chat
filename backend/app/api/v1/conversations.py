@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, Header, Query, status
@@ -79,6 +78,7 @@ async def send_message(
 
     async def event_generator():
         import uuid as _uuid
+
         import structlog as _sl
         _log = _sl.get_logger(__name__)
         try:
@@ -91,7 +91,11 @@ async def send_message(
                 yield _sse_line(chunk)
         except Exception:
             ref = str(_uuid.uuid4())[:8]
-            _log.exception("event_generator.unexpected_error", ref=ref, conversation_id=conversation_id)
+            _log.exception(
+                "event_generator.unexpected_error",
+                ref=ref,
+                conversation_id=conversation_id,
+            )
             error_chunk = StreamChunk(type="error", error=f"Unexpected error (ref: {ref})")
             yield _sse_line(error_chunk)
         finally:

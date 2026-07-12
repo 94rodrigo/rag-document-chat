@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from collections.abc import AsyncGenerator
-from typing import Any
 
 import structlog
 from redis.asyncio import ConnectionPool, Redis

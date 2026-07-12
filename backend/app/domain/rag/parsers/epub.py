@@ -59,7 +59,12 @@ def parse_epub(content: bytes) -> ParsedDocument:
 
 
 def _strip_html(html: str) -> str:
-    html = re.sub(r"<(script|style)[^>]*>.*?</(script|style)>", "", html, flags=re.DOTALL | re.IGNORECASE)
+    html = re.sub(
+        r"<(script|style)[^>]*>.*?</(script|style)>",
+        "",
+        html,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
     html = re.sub(r"<br\s*/?>", "\n", html, flags=re.IGNORECASE)
     html = re.sub(r"</(p|div|h[1-6]|li|tr|td|th)>", "\n", html, flags=re.IGNORECASE)
     html = re.sub(r"<[^>]+>", "", html)

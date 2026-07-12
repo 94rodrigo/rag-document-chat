@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 import uuid
-from datetime import UTC, timedelta
+from datetime import timedelta
 
 import bcrypt
 import structlog
 
 from app.config import get_settings
-from app.domain.auth.models import AnonymousSession, Plan, RefreshToken, User
+from app.domain.auth.models import AnonymousSession, Plan, User
 from app.domain.auth.repository import (
     AnonymousSessionRepository,
     RefreshTokenRepository,
@@ -49,7 +49,8 @@ def _lockout_key(email: str) -> str:
 async def _check_lockout(email: str) -> None:
     """Raise RateLimitExceededError if the account is temporarily locked."""
     from redis.asyncio import Redis
-    from app.infrastructure.redis import get_pool, CacheService
+
+    from app.infrastructure.redis import CacheService, get_pool
     client: Redis = Redis(connection_pool=get_pool())
     cache = CacheService(client)
     try:
@@ -65,7 +66,8 @@ async def _check_lockout(email: str) -> None:
 
 async def _record_failed_login(email: str) -> None:
     from redis.asyncio import Redis
-    from app.infrastructure.redis import get_pool, CacheService
+
+    from app.infrastructure.redis import CacheService, get_pool
     client: Redis = Redis(connection_pool=get_pool())
     cache = CacheService(client)
     try:
@@ -76,7 +78,8 @@ async def _record_failed_login(email: str) -> None:
 
 async def _clear_lockout(email: str) -> None:
     from redis.asyncio import Redis
-    from app.infrastructure.redis import get_pool, CacheService
+
+    from app.infrastructure.redis import CacheService, get_pool
     client: Redis = Redis(connection_pool=get_pool())
     cache = CacheService(client)
     try:

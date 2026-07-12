@@ -4,7 +4,7 @@ import structlog
 
 from app.config import get_settings
 from app.domain.billing.service import UsageLimitService
-from app.domain.documents.models import Document, DocumentStatus
+from app.domain.documents.models import DocumentStatus
 from app.domain.documents.repository import ChunkRepository, DocumentRepository
 from app.domain.documents.schemas import DocumentResponse, DocumentSearchResult, UploadResponse
 from app.domain.rag.parsers.registry import SUPPORTED_MIME_TYPES
@@ -13,7 +13,6 @@ from app.infrastructure.storage import StorageService
 from app.shared.exceptions import (
     DocumentNotFoundError,
     FileTooLargeError,
-    PermissionDeniedError,
     UnsupportedFileTypeError,
 )
 from app.shared.pagination import PaginatedResponse, PaginationParams
@@ -77,11 +76,10 @@ def _validate_mime(content: bytes, claimed_mime: str) -> None:
                 f"File does not have a valid ZIP/Office structure for {claimed_mime}"
             )
 
-    elif claimed_mime in ("text/plain", "text/markdown"):
-        if detected not in ("text", "zip-based", "application/pdf"):
-            # Being lenient: text detection is fuzzy; reject only clear binary
-            if detected is None:
-                raise UnsupportedFileTypeError("File contains invalid characters for a text file")
+    # Being lenient: text detection is fuzzy, so reject only clear binary — _detect_mime_from_magic
+    # returns None exactly when the bytes are not valid UTF-8.
+    elif claimed_mime in ("text/plain", "text/markdown") and detected is None:
+        raise UnsupportedFileTypeError("File contains invalid characters for a text file")
 
 
 class DocumentService:

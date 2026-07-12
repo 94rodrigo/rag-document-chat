@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from typing import Any
 
-from sqlalchemy import func, select, update
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.domain.billing.models import Subscription, SubscriptionStatus, UsageAction, UsageRecord
-from app.shared.utils import utc_now
+from app.domain.billing.models import Subscription, UsageAction, UsageRecord
 
 
 class SubscriptionRepository:

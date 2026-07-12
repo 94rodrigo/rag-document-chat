@@ -5,11 +5,10 @@ import re
 import sys
 import time
 import uuid
-from collections.abc import Awaitable, Callable
+from collections.abc import Callable
 
 import structlog
-from fastapi import Request, Response
-from structlog.stdlib import filter_by_level
+from fastapi import Request
 from structlog.typing import EventDict
 
 from app.config import LogFormat, get_settings

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from datetime import datetime
 from enum import StrEnum
 from typing import TYPE_CHECKING, Any
@@ -12,7 +11,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.config import get_settings
 from app.infrastructure.database import Base
-from app.shared.utils import generate_id, utc_now
+from app.shared.utils import generate_id
 
 if TYPE_CHECKING:
     from app.domain.auth.models import User

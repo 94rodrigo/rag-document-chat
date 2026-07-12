@@ -14,6 +14,8 @@ import { useLogin } from '../hooks/use-auth'
 export function LoginPage() {
   const { t, i18n } = useTranslation()
   const login = useLogin()
+  // i18n.language rebuilds the schema with translated error messages on a language switch.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const loginSchema = useMemo(() => makeLoginSchema(t), [t, i18n.language])
 
   const {

@@ -70,7 +70,7 @@ def _rrf_fuse(
     rrf_scores: dict[str, float] = {}
     chunks: dict[str, RetrievedChunk] = {}
 
-    for method, results in method_results.items():
+    for _method, results in method_results.items():
         for rank, chunk in enumerate(results):
             cid = chunk.chunk_id
             rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (k + rank + 1)

@@ -3,14 +3,13 @@ from __future__ import annotations
 from collections.abc import AsyncGenerator
 
 import structlog
-from sqlalchemy import event, text
+from sqlalchemy import text
 from sqlalchemy.ext.asyncio import (
     AsyncSession,
     async_sessionmaker,
     create_async_engine,
 )
-from sqlalchemy.orm import DeclarativeBase, MappedColumn
-from sqlalchemy.pool import NullPool
+from sqlalchemy.orm import DeclarativeBase
 
 from app.config import get_settings
 

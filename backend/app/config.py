@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from enum import StrEnum
 from functools import lru_cache
-from typing import Annotated
 
 from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -83,15 +82,18 @@ class Settings(BaseSettings):
         return v
 
     @model_validator(mode="after")
-    def enforce_production_security(self) -> "Settings":
+    def enforce_production_security(self) -> Settings:
         if self.app_env == Environment.production:
-            _INSECURE_DEFAULTS = {
+            insecure_defaults = {
                 "change-this-in-production",
                 "change-this-to-a-long-random-string-in-production",
             }
-            if self.secret_key in _INSECURE_DEFAULTS:
+            if self.secret_key in insecure_defaults:
                 raise ValueError("SECRET_KEY must be changed from default in production")
-            if self.jwt_secret_key in ("change-this-jwt-secret", "change-this-jwt-secret-in-production"):
+            if self.jwt_secret_key in (
+                "change-this-jwt-secret",
+                "change-this-jwt-secret-in-production",
+            ):
                 raise ValueError("JWT_SECRET_KEY must be changed from default in production")
             if "*" in self.allowed_origins:
                 raise ValueError("ALLOWED_ORIGINS must not contain wildcard (*) in production")

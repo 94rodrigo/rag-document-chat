@@ -175,6 +175,7 @@ export function useSendMessage() {
       setIsStreaming,
       setActiveCitations,
       setSourceChunks,
+      qc,
     ],
   )
 

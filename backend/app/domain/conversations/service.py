@@ -121,7 +121,7 @@ class ConversationService:
         is_first_message = await self._msgs.count_by_conversation(conv_id) == 0
 
         # Save user message
-        user_msg = await self._msgs.create(
+        await self._msgs.create(
             conversation_id=conv_id,
             role=MessageRole.user,
             content=query,

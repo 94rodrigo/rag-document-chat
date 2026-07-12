@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 import structlog
-from sqlalchemy import cast, literal, select, text
+from sqlalchemy import cast, literal, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.domain.documents.models import DocumentChunk

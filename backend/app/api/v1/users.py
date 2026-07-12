@@ -46,7 +46,7 @@ async def change_password(
     current_user: CurrentUser,
     svc: AuthSvc,
 ) -> None:
-    from app.domain.auth.service import _verify_password, _hash_password
+    from app.domain.auth.service import _hash_password, _verify_password
     from app.shared.exceptions import InvalidCredentialsError
 
     if not current_user.hashed_password:

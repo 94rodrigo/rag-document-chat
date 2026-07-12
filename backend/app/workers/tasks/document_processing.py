@@ -54,11 +54,10 @@ async def _process_document_async(document_id: str) -> dict[str, Any]:
     from sqlalchemy.pool import NullPool
 
     # Import all models so SQLAlchemy can resolve cross-model relationships
-    import app.domain.auth.models           # noqa: F401
-    import app.domain.billing.models        # noqa: F401
+    import app.domain.auth.models  # noqa: F401
+    import app.domain.billing.models  # noqa: F401
     import app.domain.conversations.models  # noqa: F401
-    import app.domain.documents.models      # noqa: F401
-
+    import app.domain.documents.models  # noqa: F401
     from app.config import get_settings
     from app.domain.documents.models import DocumentStatus
     from app.domain.documents.repository import DocumentRepository
