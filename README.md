@@ -150,6 +150,12 @@ npm install
 npm run dev                   # http://localhost:5173, proxies /api to localhost:8000
 ```
 
+> `.env.example` defaults to `STORAGE_PROVIDER=local`, which writes uploaded files inside the
+> `api`/`worker` containers' own filesystem rather than a mounted volume — they won't survive
+> `docker compose down`. The bundled MinIO service is already wired up (`S3_ENDPOINT_URL` points
+> at it inside the compose network); set `STORAGE_PROVIDER=minio` in `.env` for storage that
+> persists across restarts.
+
 ### Running the backend locally
 
 Requires PostgreSQL 16 with the `pgvector` extension, and Redis.
@@ -184,7 +190,7 @@ on default secrets, a wildcard CORS origin, or debug mode.
 | `DATABASE_URL` | `postgresql+asyncpg://docna:docna@localhost:5432/docna` | Needs pgvector |
 | `REDIS_URL` | `redis://localhost:6379/0` | Cache; Celery uses DBs 1 and 2 |
 | `SECRET_KEY` / `JWT_SECRET_KEY` | insecure defaults | Must be changed in production |
-| `STORAGE_PROVIDER` | `minio` | `minio`, `s3`, or `local` |
+| `STORAGE_PROVIDER` | `local` | `minio`, `s3`, or `local` — `.env.example` defaults to `local`; see the Docker quickstart note above |
 
 **Tuning the RAG pipeline** — the fun part:
 
@@ -326,6 +332,9 @@ Being honest about what a reader will notice:
   pinned by a test.
 - **`mypy --strict` does not pass.** It runs in CI as an advisory step rather than a gate, so the number
   is visible without pretending the codebase is clean.
+- **CI doesn't build or run the Docker images.** [`ci.yml`](.github/workflows/ci.yml) lints and tests the
+  source directly; a break in `docker-compose.yml` or either Dockerfile wouldn't be caught until someone
+  actually runs `docker compose up`.
 
 ---
 
