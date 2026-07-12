@@ -51,8 +51,13 @@ echo ""
 echo "==> Starting Docna API on http://localhost:8000"
 echo "    Docs: http://localhost:8000/docs"
 echo ""
+# --no-proxy-headers: don't let uvicorn rewrite the client address from
+# X-Forwarded-For. The app decides whether to trust that header via
+# TRUSTED_PROXY_COUNT (default 0 = never), so rate-limit identities can't be
+# spoofed by a client-supplied X-Forwarded-For.
 uvicorn app.main:app \
   --host 0.0.0.0 \
   --port 8000 \
+  --no-proxy-headers \
   --reload \
   --reload-dir app

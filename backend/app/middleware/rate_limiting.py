@@ -97,10 +97,25 @@ async def rate_limit_middleware(request: Request, call_next: Callable) -> Respon
 
 
 def _get_client_ip(request: Request) -> str:
-    """Extract real client IP, respecting X-Forwarded-For behind a trusted proxy."""
-    forwarded_for = request.headers.get("X-Forwarded-For")
-    if forwarded_for:
-        return forwarded_for.split(",")[0].strip()
+    """Extract the real client IP.
+
+    X-Forwarded-For is only trusted when TRUSTED_PROXY_COUNT > 0, and then the IP
+    is read that many hops from the right — those rightmost entries are appended by
+    our own trusted proxies and cannot be forged by the client. The leftmost value
+    is fully client-controlled, so trusting it (the previous behavior) let anyone
+    rotate the header to evade IP-based rate limits. With no trusted proxy
+    configured we ignore the header entirely and use the direct peer address.
+    """
+    trusted = settings.trusted_proxy_count
+    if trusted > 0:
+        forwarded_for = request.headers.get("X-Forwarded-For")
+        if forwarded_for:
+            parts = [p.strip() for p in forwarded_for.split(",") if p.strip()]
+            if parts:
+                # index `trusted` from the right; clamp to the leftmost if the
+                # chain is shorter than expected.
+                idx = max(0, len(parts) - trusted)
+                return parts[idx]
     if request.client:
         return request.client.host
     return "unknown"

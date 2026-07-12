@@ -22,7 +22,11 @@ from app.domain.documents.repository import DocumentRepository
 from app.domain.rag.pipeline import RAGPipeline
 from app.domain.rag.service import RAGService
 from app.infrastructure.llm import ChatProtocol
-from app.shared.exceptions import ConversationNotFoundError, PermissionDeniedError
+from app.shared.exceptions import (
+    ConversationNotFoundError,
+    MessageNotFoundError,
+    PermissionDeniedError,
+)
 from app.shared.pagination import PaginatedResponse, PaginationParams
 
 log = structlog.get_logger(__name__)
@@ -155,6 +159,30 @@ class ConversationService:
         self._assert_access(conv, user_id, anon_session_id)
         await self._convs.delete(conv)
 
+    async def delete_message(
+        self,
+        conv_id: str,
+        message_id: str,
+        user_id: str | None,
+        anon_session_id: str | None,
+        cascade: bool = False,
+    ) -> None:
+        """Delete a single message, or — when cascade is set (used by "edit and
+        regenerate") — that message and everything chronologically after it."""
+        conv = await self._convs.get_by_id(conv_id)
+        if not conv:
+            raise ConversationNotFoundError()
+        self._assert_access(conv, user_id, anon_session_id)
+
+        message = await self._msgs.get_by_id_and_conversation(message_id, conv_id)
+        if not message:
+            raise MessageNotFoundError()
+
+        if cascade:
+            await self._msgs.delete_from(conv_id, message.created_at)
+        else:
+            await self._msgs.delete(message)
+
     def _assert_access(
         self,
         conv: object,
@@ -163,9 +191,18 @@ class ConversationService:
     ) -> None:
         from app.domain.conversations.models import Conversation
         assert isinstance(conv, Conversation)
-        if user_id and conv.user_id != user_id:
-            raise PermissionDeniedError()
-        if anon_session_id and conv.anon_session_id != anon_session_id:
+        # Fail closed: match the caller's identity against the conversation's actual
+        # owner. A caller with no identity (no token, no anon session) — or whose
+        # identity doesn't match — is always denied. Guarding only when an identity
+        # is *present* would let an identity-less request slip past both checks.
+        if conv.user_id is not None:
+            if not user_id or user_id != conv.user_id:
+                raise PermissionDeniedError()
+        elif conv.anon_session_id is not None:
+            if not anon_session_id or anon_session_id != conv.anon_session_id:
+                raise PermissionDeniedError()
+        else:
+            # Orphaned conversation (no owner recorded) — deny.
             raise PermissionDeniedError()
 
     def _to_response(self, conv: object) -> ConversationResponse:

@@ -270,7 +270,17 @@
     "toasts": {
       "couldNotStart": "تعذّر بدء المحادثة",
       "couldNotDelete": "تعذّر حذف المحادثة",
-      "failedResponse": "تعذّر الحصول على إجابة"
+      "failedResponse": "تعذّر الحصول على إجابة",
+      "couldNotEdit": "تعذّر تعديل الرسالة",
+      "couldNotDeleteMessage": "تعذّر حذف الرسالة",
+      "copied": "تم النسخ إلى الحافظة"
+    },
+    "messageActions": {
+      "copy": "نسخ",
+      "edit": "تعديل",
+      "delete": "حذف الرسالة",
+      "save": "حفظ وإعادة التوليد",
+      "cancel": "إلغاء"
     }
   },
   "settings": {

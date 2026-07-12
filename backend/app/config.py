@@ -169,6 +169,11 @@ class Settings(BaseSettings):
     rate_limit_anonymous_rpm: int = 10
     rate_limit_free_rpm: int = 60
     rate_limit_pro_rpm: int = 300
+    # Number of trusted reverse proxies in front of the app. X-Forwarded-For is
+    # only honored when set > 0, and then the client IP is taken this many hops
+    # from the right (the entries a trusted proxy appends can't be spoofed by the
+    # client). 0 = ignore X-Forwarded-For entirely and use the direct peer.
+    trusted_proxy_count: int = 0
 
     # ── Plans ─────────────────────────────────────────────────────────────────
     plan_free_documents: int = 10

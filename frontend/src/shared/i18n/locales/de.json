@@ -270,7 +270,17 @@
     "toasts": {
       "couldNotStart": "Unterhaltung konnte nicht gestartet werden",
       "couldNotDelete": "Unterhaltung konnte nicht gelöscht werden",
-      "failedResponse": "Antwort konnte nicht abgerufen werden"
+      "failedResponse": "Antwort konnte nicht abgerufen werden",
+      "couldNotEdit": "Nachricht konnte nicht bearbeitet werden",
+      "couldNotDeleteMessage": "Nachricht konnte nicht gelöscht werden",
+      "copied": "In die Zwischenablage kopiert"
+    },
+    "messageActions": {
+      "copy": "Kopieren",
+      "edit": "Bearbeiten",
+      "delete": "Nachricht löschen",
+      "save": "Speichern & neu generieren",
+      "cancel": "Abbrechen"
     }
   },
   "settings": {

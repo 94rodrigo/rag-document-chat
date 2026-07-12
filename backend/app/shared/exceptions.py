@@ -89,6 +89,11 @@ class ConversationNotFoundError(NotFoundError):
     message = "Conversation not found"
 
 
+class MessageNotFoundError(NotFoundError):
+    error_code = "MESSAGE_NOT_FOUND"
+    message = "Message not found"
+
+
 # ── 409 Conflict ──────────────────────────────────────────────────────────────
 
 class ConflictError(AppError):

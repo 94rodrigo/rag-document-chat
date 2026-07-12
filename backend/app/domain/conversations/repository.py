@@ -109,6 +109,34 @@ class MessageRepository:
         )
         return result.scalar_one()
 
+    async def get_by_id_and_conversation(
+        self, message_id: str, conversation_id: str
+    ) -> Message | None:
+        result = await self._session.execute(
+            select(Message).where(
+                Message.id == message_id,
+                Message.conversation_id == conversation_id,
+            )
+        )
+        return result.scalar_one_or_none()
+
+    async def delete(self, message: Message) -> None:
+        await self._session.delete(message)
+        await self._session.flush()
+
+    async def delete_from(self, conversation_id: str, from_created_at: Any) -> None:
+        """Delete a message and every message chronologically at-or-after it in the
+        same conversation — used to truncate a branch before regenerating on edit."""
+        result = await self._session.execute(
+            select(Message).where(
+                Message.conversation_id == conversation_id,
+                Message.created_at >= from_created_at,
+            )
+        )
+        for msg in result.scalars().all():
+            await self._session.delete(msg)
+        await self._session.flush()
+
 
 class CitationRepository:
     def __init__(self, session: AsyncSession) -> None:

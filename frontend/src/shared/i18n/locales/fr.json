@@ -270,7 +270,17 @@
     "toasts": {
       "couldNotStart": "Impossible de démarrer la conversation",
       "couldNotDelete": "Impossible de supprimer la conversation",
-      "failedResponse": "Échec de l'obtention d'une réponse"
+      "failedResponse": "Échec de l'obtention d'une réponse",
+      "couldNotEdit": "Impossible de modifier le message",
+      "couldNotDeleteMessage": "Impossible de supprimer le message",
+      "copied": "Copié dans le presse-papiers"
+    },
+    "messageActions": {
+      "copy": "Copier",
+      "edit": "Modifier",
+      "delete": "Supprimer le message",
+      "save": "Enregistrer et régénérer",
+      "cancel": "Annuler"
     }
   },
   "settings": {

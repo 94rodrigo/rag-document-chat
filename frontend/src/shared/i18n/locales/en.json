@@ -270,7 +270,17 @@
     "toasts": {
       "couldNotStart": "Could not start conversation",
       "couldNotDelete": "Could not delete conversation",
-      "failedResponse": "Failed to get a response"
+      "failedResponse": "Failed to get a response",
+      "couldNotEdit": "Could not edit message",
+      "couldNotDeleteMessage": "Could not delete message",
+      "copied": "Copied to clipboard"
+    },
+    "messageActions": {
+      "copy": "Copy",
+      "edit": "Edit",
+      "delete": "Delete message",
+      "save": "Save & regenerate",
+      "cancel": "Cancel"
     }
   },
   "settings": {

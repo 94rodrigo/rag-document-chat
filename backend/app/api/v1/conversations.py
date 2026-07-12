@@ -123,3 +123,25 @@ async def delete_conversation(
         user_id=current_user.id if current_user else None,
         anon_session_id=x_anon_session,
     )
+
+
+@router.delete(
+    "/{conversation_id}/messages/{message_id}", status_code=status.HTTP_204_NO_CONTENT
+)
+async def delete_message(
+    conversation_id: str,
+    message_id: str,
+    svc: ConvSvc,
+    current_user: OptionalUser,
+    x_anon_session: Annotated[str | None, Header()] = None,
+    cascade: bool = Query(False),
+) -> None:
+    """Delete one message, or (cascade=true) that message and everything after it —
+    the latter is how an edited message discards its stale reply before resending."""
+    await svc.delete_message(
+        conversation_id,
+        message_id,
+        user_id=current_user.id if current_user else None,
+        anon_session_id=x_anon_session,
+        cascade=cascade,
+    )

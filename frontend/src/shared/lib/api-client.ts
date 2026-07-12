@@ -238,6 +238,11 @@ export const chatApi = {
     request<Conversation & { messages: ChatMessage[] }>(`/conversations/${conversationId}`)
       .then((conv) => conv.messages ?? []),
 
+  deleteMessage: (conversationId: string, messageId: string, cascade = false) =>
+    request<void>(`/conversations/${conversationId}/messages/${messageId}?cascade=${cascade}`, {
+      method: 'DELETE',
+    }),
+
   sendMessage: async (
     conversationId: string,
     content: string,

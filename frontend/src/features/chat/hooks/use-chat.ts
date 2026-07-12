@@ -105,13 +105,15 @@ export function useSendMessage() {
     setIsStreaming,
     setActiveCitations,
     setSourceChunks,
+    truncateMessagesFrom,
   } = useChatStore()
 
-  const sendMessage = useCallback(
+  // Shared by a plain send and an edit-then-regenerate — both end with an
+  // optimistic user message followed by a streamed assistant reply.
+  const streamResponse = useCallback(
     async (content: string) => {
-      if (!activeConversationId || !content.trim()) return
+      if (!activeConversationId) return
 
-      // Optimistically add user message
       const userMsg: ChatMessage = {
         id: generateId(),
         role: 'user',
@@ -179,10 +181,58 @@ export function useSendMessage() {
     ],
   )
 
+  const sendMessage = useCallback(
+    (content: string) => {
+      if (!content.trim()) return
+      return streamResponse(content)
+    },
+    [streamResponse],
+  )
+
+  // Discards the edited message and everything after it (server + local state),
+  // then resends the edited content through the normal streaming path — a
+  // fresh reply, not an in-place patch of the stale one.
+  const editMessage = useCallback(
+    async (messageId: string, newContent: string) => {
+      if (!activeConversationId || !newContent.trim()) return
+
+      try {
+        await chatApi.deleteMessage(activeConversationId, messageId, true)
+      } catch {
+        toast.error(i18n.t('chat.toasts.couldNotEdit'))
+        return
+      }
+
+      truncateMessagesFrom(activeConversationId, messageId)
+      await streamResponse(newContent)
+    },
+    [activeConversationId, streamResponse, truncateMessagesFrom],
+  )
+
   const abort = useCallback(() => {
     abortRef.current?.abort()
     setIsStreaming(false)
   }, [setIsStreaming])
 
-  return { sendMessage, abort }
+  return { sendMessage, editMessage, abort }
+}
+
+export function useDeleteMessage() {
+  const qc = useQueryClient()
+  const { activeConversationId, removeMessage } = useChatStore()
+
+  return useMutation({
+    mutationFn: (messageId: string) => {
+      if (!activeConversationId) throw new Error('No active conversation')
+      return chatApi.deleteMessage(activeConversationId, messageId, false)
+    },
+    onSuccess: (_data, messageId) => {
+      if (!activeConversationId) return
+      removeMessage(activeConversationId, messageId)
+      // Re-sync from the server in case the deleted message was the one
+      // populating the Sources panel.
+      qc.invalidateQueries({ queryKey: ['messages', activeConversationId] })
+    },
+    onError: () => toast.error(i18n.t('chat.toasts.couldNotDeleteMessage')),
+  })
 }
