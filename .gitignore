@@ -25,3 +25,7 @@ skills-lock.json
 
 # ── OS ─────────────────────────────────────────────────────────────────────
 .DS_Store
+
+# Coverage
+.coverage
+htmlcov/

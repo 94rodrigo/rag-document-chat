@@ -85,7 +85,12 @@ class RecursiveChunker:
     ) -> list[TextChunk]:
         chunks: list[TextChunk] = []
         current: list[str] = []
-        current_tokens = 0
+
+        def window_tokens(parts: list[str]) -> int:
+            # Measure the joined text, not the sum of its parts: joining with spaces
+            # re-tokenises the boundaries and can cost more tokens than the pieces did
+            # separately, which would push the emitted chunk over chunk_size.
+            return count_tokens(" ".join(parts), self._tokenizer)
 
         def flush() -> None:
             if not current:
@@ -101,24 +106,21 @@ class RecursiveChunker:
             )
 
         for split in splits:
-            split_tokens = count_tokens(split, self._tokenizer)
-
-            if current_tokens + split_tokens > self._chunk_size and current:
+            if current and window_tokens([*current, split]) > self._chunk_size:
                 flush()
-                # Build overlap from tail of current window
+                # Carry the tail of the flushed window into the next chunk as overlap.
                 overlap: list[str] = []
-                overlap_tokens = 0
                 for s in reversed(current):
-                    s_toks = count_tokens(s, self._tokenizer)
-                    if overlap_tokens + s_toks > self._chunk_overlap:
+                    if window_tokens([s, *overlap]) > self._chunk_overlap:
                         break
                     overlap.insert(0, s)
-                    overlap_tokens += s_toks
+                # The overlap is a nicety, not a guarantee: drop as much of it as needed
+                # so that prepending it cannot push this chunk over chunk_size.
+                while overlap and window_tokens([*overlap, split]) > self._chunk_size:
+                    overlap.pop(0)
                 current = overlap
-                current_tokens = overlap_tokens
 
             current.append(split)
-            current_tokens += split_tokens
 
         flush()
         return chunks
