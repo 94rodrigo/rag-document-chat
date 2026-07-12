@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="Docna RAG pipeline: ingestion and query paths">
+  <defs>
+    <style>
+      .bg    { fill: #0E1014; }
+      .lane  { fill: #14181E; stroke: #262C36; stroke-width: 1; }
+      .step  { fill: #1C222B; stroke: #333B48; stroke-width: 1; }
+      .hot   { fill: #221C10; stroke: #F59E0B; stroke-width: 1.4; }
+      .t     { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; fill: #E7E9EC; }
+      .mono  { font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .title { font-size: 21px; font-weight: 600; fill: #FFFFFF; }
+      .sub   { font-size: 13px; fill: #8B93A0; }
+      .kicker{ font-size: 10.5px; font-weight: 600; fill: #F59E0B; letter-spacing: 1.4px; }
+      .lane-t{ font-size: 13px; font-weight: 600; fill: #C3C9D2; }
+      .st    { font-size: 13px; font-weight: 600; fill: #F0F2F4; }
+      .mut   { font-size: 11px; fill: #8B93A0; }
+      .amber { font-size: 11px; fill: #F0B354; }
+      .arr   { stroke: #4A5464; stroke-width: 1.4; fill: none; marker-end: url(#a2); }
+      .arrh  { stroke: #F59E0B; stroke-width: 1.8; fill: none; marker-end: url(#a1); }
+    </style>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#F59E0B"/>
+    </marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4A5464"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="720"/>
+
+  <text class="t title" x="40" y="46">The RAG Pipeline</text>
+  <text class="t sub" x="40" y="70">Hybrid retrieval (dense + BM25) fused with Reciprocal Rank Fusion, then re-scored by a cross-encoder</text>
+  <line x1="40" y1="88" x2="1160" y2="88" stroke="#262C36" stroke-width="1"/>
+
+  <!-- ══ INGESTION LANE ══ -->
+  <rect class="lane" x="40" y="112" width="1120" height="168" rx="10"/>
+  <text class="t kicker" x="60" y="139">INGESTION — CELERY WORKER, ASYNCHRONOUS</text>
+
+  <rect class="step" x="60" y="155" width="170" height="98" rx="8"/>
+  <text class="t st" x="76" y="182">1 · Parse</text>
+  <text class="t mut mono" x="76" y="204">pdf · docx · doc</text>
+  <text class="t mut mono" x="76" y="222">epub · txt · md</text>
+  <text class="t mut" x="76" y="242">-> (page, text)[]</text>
+
+  <rect class="step" x="278" y="155" width="170" height="98" rx="8"/>
+  <text class="t st" x="294" y="182">2 · Chunk</text>
+  <text class="t mut mono" x="294" y="204">recursive | semantic</text>
+  <text class="t mut mono" x="294" y="222">| hybrid  (default)</text>
+  <text class="t mut" x="294" y="242">512 tok · 64 overlap</text>
+
+  <rect class="step" x="496" y="155" width="170" height="98" rx="8"/>
+  <text class="t st" x="512" y="182">3 · Embed</text>
+  <text class="t mut mono" x="512" y="204">openai | voyage | bge</text>
+  <text class="t mut" x="512" y="226">1536-dim vectors</text>
+  <text class="t mut" x="512" y="244">batched</text>
+
+  <rect class="step" x="714" y="155" width="170" height="98" rx="8"/>
+  <text class="t st" x="730" y="182">4 · Index</text>
+  <text class="t mut mono" x="730" y="204">pgvector | qdrant</text>
+  <text class="t mut" x="730" y="226">vector + tsvector</text>
+  <text class="t mut" x="730" y="244">(BM25 lexical index)</text>
+
+  <rect class="step" x="932" y="155" width="208" height="98" rx="8"/>
+  <text class="t st" x="948" y="182">5 · Ready</text>
+  <text class="t mut" x="948" y="204">status -> indexed</text>
+  <text class="t mut" x="948" y="226">chunks carry page numbers</text>
+  <text class="t mut" x="948" y="244">for citation resolution</text>
+
+  <path class="arr" d="M 230 204 L 270 204"/>
+  <path class="arr" d="M 448 204 L 488 204"/>
+  <path class="arr" d="M 666 204 L 706 204"/>
+  <path class="arr" d="M 884 204 L 924 204"/>
+
+  <!-- ══ QUERY LANE ══ -->
+  <rect class="lane" x="40" y="308" width="1120" height="300" rx="10"/>
+  <text class="t kicker" x="60" y="335">QUERY — REQUEST PATH, STREAMING</text>
+
+  <!-- question -->
+  <rect class="step" x="60" y="392" width="150" height="86" rx="8"/>
+  <text class="t st" x="76" y="422">Question</text>
+  <text class="t mut" x="76" y="444">+ conversation</text>
+  <text class="t mut" x="76" y="462">history</text>
+
+  <!-- embed query -->
+  <rect class="step" x="248" y="392" width="150" height="86" rx="8"/>
+  <text class="t st" x="264" y="422">Embed query</text>
+  <text class="t mut" x="264" y="444">same embedder</text>
+  <text class="t mut" x="264" y="462">as ingestion</text>
+
+  <!-- fan out: dense + bm25 -->
+  <rect class="step" x="436" y="352" width="176" height="76" rx="8"/>
+  <text class="t st" x="452" y="380">Dense search</text>
+  <text class="t mut" x="452" y="402">cosine over pgvector</text>
+  <text class="t mut" x="452" y="418">captures meaning</text>
+
+  <rect class="step" x="436" y="446" width="176" height="76" rx="8"/>
+  <text class="t st" x="452" y="474">BM25 search</text>
+  <text class="t mut" x="452" y="496">Postgres full-text</text>
+  <text class="t mut" x="452" y="512">captures rare terms</text>
+
+  <!-- RRF -->
+  <rect class="hot" x="650" y="392" width="176" height="86" rx="8"/>
+  <text class="t st" x="666" y="420">RRF fusion</text>
+  <text class="t amber mono" x="666" y="443">Σ 1 / (k + rank)</text>
+  <text class="t mut" x="666" y="462">k = 60 · consensus wins</text>
+
+  <!-- rerank -->
+  <rect class="hot" x="864" y="392" width="176" height="86" rx="8"/>
+  <text class="t st" x="880" y="420">Cross-encoder</text>
+  <text class="t amber" x="880" y="443">re-rank top 20 -> 6</text>
+  <text class="t mut" x="880" y="462">ms-marco-MiniLM-L-6</text>
+
+  <!-- arrows query -->
+  <path class="arr" d="M 210 435 L 240 435"/>
+  <path class="arr" d="M 398 425 C 416 425, 418 390, 428 390"/>
+  <path class="arr" d="M 398 445 C 416 445, 418 484, 428 484"/>
+  <path class="arrh" d="M 612 390 C 630 390, 632 420, 642 420"/>
+  <path class="arrh" d="M 612 484 C 630 484, 632 452, 642 452"/>
+  <path class="arrh" d="M 826 435 L 856 435"/>
+
+  <text class="t mut" x="650" y="510">20 candidates from each</text>
+  <text class="t mut" x="650" y="528">retriever, deduplicated</text>
+  <text class="t mut" x="864" y="510">joint (query, passage)</text>
+  <text class="t mut" x="864" y="528">scoring — slow but precise</text>
+
+  <text class="t mut" x="60" y="574">Why two retrievers? Dense search finds &#8220;what the user meant&#8221;; BM25 finds exact identifiers, product codes and rare</text>
+  <text class="t mut" x="60" y="592">proper nouns that embeddings blur away. RRF needs no score calibration between them — it fuses on rank alone.</text>
+
+  <!-- ══ GENERATION ══ -->
+  <rect class="lane" x="40" y="636" width="1120" height="60" rx="10"/>
+  <text class="t kicker" x="60" y="662">GENERATION</text>
+  <text class="t st" x="60" y="684">LLM  ->  answer streamed over SSE, with inline citations resolved to document + page</text>
+  <text class="t mut mono" x="700" y="684">openai gpt-4o-mini  |  anthropic claude-sonnet-4-6</text>
+</svg>
