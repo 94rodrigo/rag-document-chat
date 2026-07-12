@@ -1,0 +1,35 @@
+# ── VCS & tooling ──────────────────────────────────────────────────────────
+.git
+.gitignore
+.dockerignore
+docker/
+Dockerfile*
+
+# ── Secrets ────────────────────────────────────────────────────────────────
+.env
+.env.local
+*.env
+!*.env.example
+
+# ── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+**/__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Runtime data ───────────────────────────────────────────────────────────
+storage/
+
+# ── Tests — not needed at runtime; dev deps aren't installed in the image ──
+tests/
+
+# ── Editors / OS ───────────────────────────────────────────────────────────
+.DS_Store
+.vscode/
+.idea/

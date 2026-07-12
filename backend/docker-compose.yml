@@ -1,17 +1,35 @@
+# Credential/env defaults below (docna/docna, minioadmin/minioadmin, empty
+# Flower auth) are for local development only — this file has no separate
+# production variant, so override via a .env next to this file (or real env
+# vars) before ever pointing it at anything but localhost.
+
+# Shared by api and worker: env_file supplies secrets (API keys, JWT secret,
+# Stripe keys, ...); this override block wins over whatever .env has for the
+# infra URLs, because a plain .env is usually tuned for native/host
+# development (DATABASE_URL etc pointing at "localhost"), which inside a
+# container resolves to the container itself, not the db/redis/minio service
+# containers, and would otherwise silently break the entire compose stack.
+x-backend-env: &backend-env
+  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-docna}:${POSTGRES_PASSWORD:-docna}@db:5432/${POSTGRES_DB:-docna}
+  REDIS_URL: redis://redis:6379/0
+  CELERY_BROKER_URL: redis://redis:6379/1
+  CELERY_RESULT_BACKEND: redis://redis:6379/2
+  S3_ENDPOINT_URL: http://minio:9000
+
 services:
   db:
     image: pgvector/pgvector:pg16
     restart: unless-stopped
     environment:
-      POSTGRES_USER: docna
-      POSTGRES_PASSWORD: docna
-      POSTGRES_DB: docna
+      POSTGRES_USER: ${POSTGRES_USER:-docna}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docna}
+      POSTGRES_DB: ${POSTGRES_DB:-docna}
     ports:
       - "5432:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U docna"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-docna}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -34,8 +52,8 @@ services:
     restart: unless-stopped
     command: server /data --console-address ":9001"
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY:-minioadmin}
     ports:
       - "9000:9000"
       - "9001:9001"
@@ -51,8 +69,11 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+      target: api
     restart: unless-stopped
     env_file: .env
+    environment:
+      <<: *backend-env
     ports:
       - "8000:8000"
     depends_on:
@@ -63,19 +84,26 @@ services:
       minio:
         condition: service_healthy
     volumes:
-      - ./app:/app/app  # hot-reload in dev
+      - ./app:/app/app  # picked up live — the api image reloads unless APP_ENV=production
 
   worker:
     build:
       context: .
-      dockerfile: docker/Dockerfile.worker
+      dockerfile: docker/Dockerfile
+      target: worker
     restart: unless-stopped
     env_file: .env
+    environment:
+      <<: *backend-env
     depends_on:
       db:
         condition: service_healthy
       redis:
         condition: service_healthy
+      minio:
+        condition: service_healthy
+    volumes:
+      - ./app:/app/app  # picked up on worker restart (celery doesn't autoreload)
 
   flower:
     image: mher/flower:2.0
@@ -83,10 +111,24 @@ services:
     environment:
       CELERY_BROKER_URL: redis://redis:6379/1
       FLOWER_PORT: 5555
+      # Unset by default (dev convenience, matches prior behavior). Set
+      # FLOWER_BASIC_AUTH=user:pass in .env before exposing this beyond localhost.
+      FLOWER_BASIC_AUTH: ${FLOWER_BASIC_AUTH:-}
     ports:
       - "5555:5555"
     depends_on:
       - redis
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      api:
+        condition: service_healthy
 
 volumes:
   pg_data:

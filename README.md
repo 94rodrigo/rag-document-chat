@@ -134,16 +134,20 @@ docker compose exec api alembic upgrade head
 
 | Service | URL |
 |---|---|
+| Frontend | http://localhost:5173 |
 | API + interactive docs | http://localhost:8000/docs |
 | Flower (task monitor) | http://localhost:5555 |
 | MinIO console | http://localhost:9001 |
 
-Then start the frontend:
+The `api` image reloads on code changes automatically unless `APP_ENV=production`; the `worker`
+container needs a restart (`docker compose restart worker`) to pick up code changes since Celery
+doesn't autoreload. For faster frontend iteration without a rebuild on every save, run it outside
+Docker instead:
 
 ```bash
 cd ../frontend
 npm install
-npm run dev                   # http://localhost:5173
+npm run dev                   # http://localhost:5173, proxies /api to localhost:8000
 ```
 
 ### Running the backend locally
