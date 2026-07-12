@@ -15,6 +15,7 @@ asynchronous document ingestion, Stripe billing, and a React frontend in six lan
 ![Celery](https://img.shields.io/badge/Celery-workers-37814A?logo=celery&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-billing-635BFF?logo=stripe&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-74_passing-3FB950)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 </div>
 
@@ -319,7 +320,29 @@ Being honest about what a reader will notice:
   module import to a configured database. It should move behind a factory.
 - **`_rrf_fuse` mutates the chunks it is handed** rather than returning copies — a sharp edge, currently
   pinned by a test.
-- **No CI pipeline** is configured.
+- **`mypy --strict` does not pass.** It runs in CI as an advisory step rather than a gate, so the number
+  is visible without pretending the codebase is clean.
+
+---
+
+## Continuous integration
+
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml) runs on every push and pull request:
+
+| Job | Steps |
+|---|---|
+| **Backend** | `ruff check` → `pytest --cov` → `mypy` *(advisory, non-blocking)* |
+| **Frontend** | `eslint` → `tsc --noEmit` → `vite build` |
+
+Both jobs gate on lint and pass today. Getting there meant fixing the frontend's tooling, which was
+quietly broken: `npm run lint` had no ESLint config at all, and `npm run typecheck` failed on an invalid
+`ignoreDeprecations` value in `tsconfig.json`. Neither script had ever run successfully.
+
+---
+
+## License
+
+[MIT](LICENSE) © 2026 Rodrigo Costa
 
 ---
 
