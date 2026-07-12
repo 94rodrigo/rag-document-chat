@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { motion } from 'framer-motion'
@@ -11,17 +11,30 @@ import { Input } from '@/shared/components/ui/input'
 import { Progress } from '@/shared/components/ui/progress'
 import { Skeleton } from '@/shared/components/ui/skeleton'
 import { DocumentCard } from '../components/DocumentCard'
-import { useDocuments, useUploadDocument } from '../hooks/use-documents'
+import { SourceCard } from '../components/SourceCard'
+import { useDocuments, useUploadDocument, useDocumentSearch } from '../hooks/use-documents'
 import { useDocumentsStore } from '../stores/documents-store'
+
+const SEARCH_DEBOUNCE_MS = 350
 
 export function DocumentsPage() {
   const { t } = useTranslation()
   const [search, setSearch] = useState('')
+  const [debouncedSearch, setDebouncedSearch] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   const { isLoading } = useDocuments()
   const upload = useUploadDocument()
   const { documents, uploadingFiles } = useDocumentsStore()
+
+  // Debounced so every keystroke doesn't trigger an embedding + rerank round trip.
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedSearch(search.trim()), SEARCH_DEBOUNCE_MS)
+    return () => clearTimeout(timer)
+  }, [search])
+
+  const isSearchQuery = debouncedSearch.length >= 2
+  const { data: searchResults, isLoading: searchLoading } = useDocumentSearch(debouncedSearch)
 
   const onDrop = useCallback(
     (files: File[]) => files.forEach((f) => upload.mutate(f)),
@@ -38,10 +51,6 @@ export function DocumentsPage() {
       'text/markdown': ['.md'],
     },
   })
-
-  const filtered = documents.filter((d) =>
-    d.name.toLowerCase().includes(search.toLowerCase()),
-  )
 
   return (
     <div
@@ -135,54 +144,77 @@ export function DocumentsPage() {
           </div>
         )}
 
-        {/* Document grid/list */}
-        {isLoading ? (
+        {/* Semantic search results — passages, not documents */}
+        {isSearchQuery ? (
+          searchLoading ? (
+            <div className="space-y-2">
+              <p className="text-xs text-text-tertiary uppercase tracking-wider mb-2">{t('documents.searching')}</p>
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-28 w-full" />
+              ))}
+            </div>
+          ) : !searchResults?.length ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="h-14 w-14 rounded-2xl bg-elevated border border-border flex items-center justify-center mb-4">
+                <Search className="size-6 text-text-tertiary" />
+              </div>
+              <h3 className="font-display text-xl text-text-primary mb-2">{t('documents.noMatches')}</h3>
+              <p className="text-sm text-text-secondary max-w-xs mb-5">
+                {t('documents.noMatchesFor', { search: debouncedSearch })}
+              </p>
+              <Button variant="outline" size="sm" onClick={() => setSearch('')}>
+                {t('documents.clearSearch')}
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-2 max-w-2xl">
+              <p className="text-xs text-text-tertiary uppercase tracking-wider mb-2">
+                {t('documents.searchResultsCount', { count: searchResults.length })}
+              </p>
+              {searchResults.map((chunk, i) => (
+                <SourceCard key={chunk.id} chunk={chunk} index={i} />
+              ))}
+            </div>
+          )
+        ) : isLoading ? (
           <div className={`grid gap-3 ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
             {Array.from({ length: 6 }).map((_, i) => (
               <Skeleton key={i} className="h-24 w-full" />
             ))}
           </div>
-        ) : filtered.length === 0 ? (
+        ) : documents.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center">
             <div className="h-14 w-14 rounded-2xl bg-elevated border border-border flex items-center justify-center mb-4">
               <FileText className="size-6 text-text-tertiary" />
             </div>
             <h3 className="font-display text-xl text-text-primary mb-2">
-              {search ? t('documents.noMatches') : t('documents.noDocuments')}
+              {t('documents.noDocuments')}
             </h3>
             <p className="text-sm text-text-secondary max-w-xs mb-5">
-              {search
-                ? t('documents.noMatchesFor', { search })
-                : t('documents.noDocumentsBody')}
+              {t('documents.noDocumentsBody')}
             </p>
-            {search ? (
-              <Button variant="outline" size="sm" onClick={() => setSearch('')}>
-                {t('documents.clearSearch')}
+            <label className="cursor-pointer">
+              <input
+                type="file"
+                className="sr-only"
+                multiple
+                accept=".pdf,.txt,.docx,.md"
+                onChange={(e) => {
+                  Array.from(e.target.files ?? []).forEach((f) => upload.mutate(f))
+                  e.target.value = ''
+                }}
+              />
+              <Button size="sm" asChild>
+                <span>
+                  <Upload className="size-3.5" />
+                  {t('documents.uploadFirst')}
+                </span>
               </Button>
-            ) : (
-              <label className="cursor-pointer">
-                <input
-                  type="file"
-                  className="sr-only"
-                  multiple
-                  accept=".pdf,.txt,.docx,.md"
-                  onChange={(e) => {
-                    Array.from(e.target.files ?? []).forEach((f) => upload.mutate(f))
-                    e.target.value = ''
-                  }}
-                />
-                <Button size="sm" asChild>
-                  <span>
-                    <Upload className="size-3.5" />
-                    {t('documents.uploadFirst')}
-                  </span>
-                </Button>
-              </label>
-            )}
+            </label>
           </div>
         ) : (
           <div className={`grid gap-3 ${viewMode === 'grid' ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'}`}>
-            {filtered.map((doc, i) => (
+            {documents.map((doc, i) => (
               <DocumentCard key={doc.id} doc={doc} index={i} />
             ))}
           </div>

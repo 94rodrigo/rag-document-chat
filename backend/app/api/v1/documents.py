@@ -10,6 +10,7 @@ from app.domain.documents.schemas import (
     DocumentChunkResponse,
     DocumentListResponse,
     DocumentResponse,
+    DocumentSearchResult,
     UploadResponse,
 )
 from app.domain.documents.service import DocumentService
@@ -59,6 +60,17 @@ async def list_documents(
         per_page=result.per_page,
         has_more=result.has_more,
     )
+
+
+@router.get("/search", response_model=list[DocumentSearchResult])
+async def search_documents(
+    current_user: CurrentUser,
+    svc: DocSvc,
+    q: str = Query(..., min_length=2, max_length=500),
+) -> list[DocumentSearchResult]:
+    """Semantic search across every ready document the user owns. Registered
+    before /{document_id} so "search" is never swallowed as a document id."""
+    return await svc.search(current_user.id, q)
 
 
 @router.get("/{document_id}", response_model=DocumentResponse)

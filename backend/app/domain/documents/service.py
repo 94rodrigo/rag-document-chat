@@ -6,8 +6,9 @@ from app.config import get_settings
 from app.domain.billing.service import UsageLimitService
 from app.domain.documents.models import Document, DocumentStatus
 from app.domain.documents.repository import ChunkRepository, DocumentRepository
-from app.domain.documents.schemas import DocumentResponse, UploadResponse
+from app.domain.documents.schemas import DocumentResponse, DocumentSearchResult, UploadResponse
 from app.domain.rag.parsers.registry import SUPPORTED_MIME_TYPES
+from app.domain.rag.pipeline import RAGPipeline
 from app.infrastructure.storage import StorageService
 from app.shared.exceptions import (
     DocumentNotFoundError,
@@ -90,11 +91,13 @@ class DocumentService:
         chunk_repo: ChunkRepository,
         storage: StorageService,
         usage_svc: UsageLimitService,
+        pipeline: RAGPipeline,
     ) -> None:
         self._docs = doc_repo
         self._chunks = chunk_repo
         self._storage = storage
         self._usage = usage_svc
+        self._pipeline = pipeline
 
     async def upload(
         self,
@@ -177,6 +180,36 @@ class DocumentService:
         if not doc:
             raise DocumentNotFoundError()
         return await self._chunks.get_by_document(doc_id)
+
+    async def search(self, user_id: str, query: str) -> list[DocumentSearchResult]:
+        """Semantic search across every ready document the user owns — the same
+        retrieve → rerank path chat uses, minus the LLM call."""
+        ready_docs = await self._docs.list_ready_for_user(user_id)
+        if not ready_docs:
+            return []
+
+        document_ids = [d.id for d in ready_docs]
+        document_names = {d.id: d.name for d in ready_docs}
+
+        chunks = await self._pipeline.retrieve_and_rerank(
+            query=query,
+            user_id=user_id,
+            document_ids=document_ids,
+            document_names=document_names,
+        )
+
+        return [
+            DocumentSearchResult(
+                id=chunk.chunk_id,
+                document_id=chunk.document_id,
+                document_name=chunk.document_name,
+                content=chunk.content,
+                page_number=chunk.page_number,
+                score=chunk.final_score,
+                metadata=chunk.metadata,
+            )
+            for chunk in chunks
+        ]
 
     async def delete(self, doc_id: str, user_id: str) -> None:
         doc = await self._docs.get_by_id_and_user(doc_id, user_id)

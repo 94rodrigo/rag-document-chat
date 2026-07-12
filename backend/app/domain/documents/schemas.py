@@ -43,3 +43,13 @@ class DocumentChunkResponse(BaseModel):
 class UploadResponse(BaseModel):
     document: DocumentResponse
     task_id: str
+
+
+class DocumentSearchResult(BaseModel):
+    id: str
+    document_id: str
+    document_name: str
+    content: str
+    page_number: int | None
+    score: float
+    metadata: dict[str, Any] = {}

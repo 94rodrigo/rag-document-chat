@@ -92,15 +92,16 @@ def get_usage_limit_service(
 ) -> UsageLimitService:
     return UsageLimitService(user_repo, doc_repo, usage_repo, anon_repo)
 
+def get_rag_pipeline(db: DbSession) -> RAGPipeline:
+    return build_pipeline(session=db)
+
 def get_document_service(
     doc_repo: Annotated[DocumentRepository, Depends(get_document_repo)],
     chunk_repo: Annotated[ChunkRepository, Depends(get_chunk_repo)],
     usage_svc: Annotated[UsageLimitService, Depends(get_usage_limit_service)],
+    pipeline: Annotated[RAGPipeline, Depends(get_rag_pipeline)],
 ) -> DocumentService:
-    return DocumentService(doc_repo, chunk_repo, get_storage(), usage_svc)
-
-def get_rag_pipeline(db: DbSession) -> RAGPipeline:
-    return build_pipeline(session=db)
+    return DocumentService(doc_repo, chunk_repo, get_storage(), usage_svc, pipeline)
 
 
 def get_conversation_service(

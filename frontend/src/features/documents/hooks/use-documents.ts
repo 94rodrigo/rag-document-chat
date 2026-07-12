@@ -20,6 +20,17 @@ export function useDocuments() {
   })
 }
 
+// A separate query key namespace from DOCUMENTS_KEY (document metadata list) —
+// this returns matched passages, not documents, and shouldn't invalidate together.
+export function useDocumentSearch(query: string) {
+  const trimmed = query.trim()
+  return useQuery({
+    queryKey: ['document-search', trimmed],
+    queryFn: () => documentsApi.search(trimmed),
+    enabled: trimmed.length >= 2,
+  })
+}
+
 export function useDeleteDocument() {
   const qc = useQueryClient()
   const removeDocument = useDocumentsStore((s) => s.removeDocument)

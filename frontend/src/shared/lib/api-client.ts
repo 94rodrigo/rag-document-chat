@@ -213,6 +213,9 @@ export const documentsApi = {
   delete: (id: string) => request<void>(`/documents/${id}`, { method: 'DELETE' }),
 
   getChunks: (id: string) => request<DocumentChunk[]>(`/documents/${id}/chunks`),
+
+  search: (query: string) =>
+    request<DocumentChunk[]>(`/documents/search?q=${encodeURIComponent(query)}`),
 }
 
 // ─── Chat ────────────────────────────────────────────────────────────────────

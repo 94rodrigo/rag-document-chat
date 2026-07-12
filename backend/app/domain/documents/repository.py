@@ -58,6 +58,17 @@ class DocumentRepository:
 
         return list(docs_result.scalars().all()), count_result.scalar_one()
 
+    async def list_ready_for_user(self, user_id: str) -> list[Document]:
+        """All of a user's fully-indexed documents, unpaginated — for building the
+        document_ids/document_names scope of a corpus-wide search."""
+        result = await self._session.execute(
+            select(Document).where(
+                Document.user_id == user_id,
+                Document.status == DocumentStatus.ready,
+            )
+        )
+        return list(result.scalars().all())
+
     async def count_by_user(self, user_id: str) -> int:
         result = await self._session.execute(
             select(func.count()).select_from(Document).where(
