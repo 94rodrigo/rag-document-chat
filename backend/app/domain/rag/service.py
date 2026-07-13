@@ -131,19 +131,21 @@ class RAGService:
             document_names=doc_names,
         )
 
-        # Emit citation events — truncate content exposed to client
+        # Emit citation events — truncate content exposed to client. Kept around (rather
+        # than rebuilt from `chunks`) so the "done" event below can report the exact same
+        # citations the client already received, instead of a second, easy-to-drift copy.
+        citation_responses: list[CitationResponse] = []
         for chunk in chunks:
-            yield StreamChunk(
-                type="citation",
-                citation=CitationResponse(
-                    chunk_id=chunk.chunk_id,
-                    document_id=chunk.document_id,
-                    document_name=chunk.document_name,
-                    content=chunk.content[:_CITATION_SNIPPET_MAX],
-                    page_number=chunk.page_number,
-                    score=chunk.final_score,
-                ),
+            citation = CitationResponse(
+                chunk_id=chunk.chunk_id,
+                document_id=chunk.document_id,
+                document_name=chunk.document_name,
+                content=chunk.content[:_CITATION_SNIPPET_MAX],
+                page_number=chunk.page_number,
+                score=chunk.final_score,
             )
+            citation_responses.append(citation)
+            yield StreamChunk(type="citation", citation=citation)
 
         messages = self._build_messages(query, chunks, history)
 
@@ -191,6 +193,12 @@ class RAGService:
                 "id": saved_message.id,
                 "role": str(saved_message.role),
                 "content": full_answer,
+                # Without this, the client's optimistic render of the just-streamed
+                # message has no citations (undefined, not just empty) even though
+                # they were already sent as separate "citation" events and are
+                # correctly persisted below — the chip row stays empty until the
+                # conversation is reloaded from the server.
+                "citations": [c.model_dump(mode="json") for c in citation_responses],
                 "created_at": (
                     saved_message.created_at.isoformat() if saved_message.created_at else None
                 ),
