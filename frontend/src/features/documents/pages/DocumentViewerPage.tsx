@@ -63,7 +63,20 @@ export function DocumentViewerPage() {
   const createConversation = useCreateConversation()
   const { documents } = useDocumentsStore()
 
-  const doc = documents.find((d) => d.id === id)
+  const storeDoc = documents.find((d) => d.id === id)
+
+  // The store is only populated by visiting /documents first (useDocuments' queryFn
+  // calls setDocuments). Landing here directly — a bookmark, a shared link, or a hard
+  // refresh — leaves it empty, which used to render "document not found" for a document
+  // that exists. Fetch it directly as a fallback in that case; skipped entirely once the
+  // store already has it, so the common (navigated-from-the-list) path stays a single fetch.
+  const { data: fetchedDoc, isLoading: docLoading } = useQuery({
+    queryKey: ['document', id],
+    queryFn: () => documentsApi.get(id!),
+    enabled: !!id && !storeDoc,
+  })
+
+  const doc = storeDoc ?? fetchedDoc
 
   const { blobUrl, loading: pdfLoading, error: pdfError } = usePdfBlobUrl(id, doc?.mimeType)
 
@@ -127,6 +140,13 @@ export function DocumentViewerPage() {
   }
 
   if (!doc) {
+    if (docLoading) {
+      return (
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <Loader2 className="size-8 text-accent animate-spin" />
+        </div>
+      )
+    }
     return (
       <div className="flex flex-col items-center justify-center min-h-screen text-center">
         <AlertCircle className="size-10 text-text-tertiary mb-4" />
