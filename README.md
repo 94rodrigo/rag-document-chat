@@ -62,6 +62,19 @@ Reciprocal Rank Fusion, and re-scores the survivors with a model that reads the 
 
 ---
 
+## Screenshots
+
+|  |  |
+|---|---|
+| ![Landing page](docs/assets/screenshot-landing.png) | ![Chat with cited answer](docs/assets/screenshot-chat.png) |
+| Landing page | Chat — answer grounded in the source document, with numbered citations |
+
+![PDF preview with cited passage highlighted](docs/assets/screenshot-pdf-preview.png)
+
+PDF preview — clicking a citation jumps to the exact page and highlights the passage it came from
+
+---
+
 ## How the RAG pipeline works
 
 ![RAG pipeline](docs/assets/rag-pipeline.svg)
