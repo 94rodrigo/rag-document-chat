@@ -32,7 +32,11 @@ COPY pyproject.toml .
 RUN pip install -e .
 
 COPY . .
-RUN chown -R app:app /app
+# storage/ is excluded by .dockerignore (runtime data, not source), so it doesn't exist
+# yet here. Created explicitly, owned by app, so that when compose mounts a fresh named
+# volume over it, Docker seeds the volume from this dir instead of a root-owned empty
+# one — otherwise the app user can't write to it (PermissionError) at runtime.
+RUN mkdir -p storage && chown -R app:app /app
 USER app
 
 # ── api ─────────────────────────────────────────────────────────────────────

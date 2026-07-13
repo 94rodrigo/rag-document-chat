@@ -89,6 +89,7 @@ services:
         condition: service_healthy
     volumes:
       - ./backend/app:/app/app  # picked up live — the api image reloads unless APP_ENV=production
+      - storage_data:/app/storage  # STORAGE_PROVIDER=local: shared with worker, which has its own filesystem
 
   worker:
     build:
@@ -108,6 +109,7 @@ services:
         condition: service_healthy
     volumes:
       - ./backend/app:/app/app  # picked up on worker restart (celery doesn't autoreload)
+      - storage_data:/app/storage  # STORAGE_PROVIDER=local: shared with api, which writes the uploads
 
   flower:
     image: mher/flower:2.0
@@ -138,3 +140,4 @@ volumes:
   pg_data:
   redis_data:
   minio_data:
+  storage_data:
