@@ -48,7 +48,7 @@ alembic upgrade head
 
 # ── API server ────────────────────────────────────────────────────────────────
 echo ""
-echo "==> Starting Docna API on http://localhost:8000"
+echo "==> Starting Citenest API on http://localhost:8000"
 echo "    Docs: http://localhost:8000/docs"
 echo ""
 # --no-proxy-headers: don't let uvicorn rewrite the client address from

@@ -3,9 +3,9 @@
 # Run with: sudo bash scripts/setup_local_services.sh
 set -e
 
-DB_USER="docna"
-DB_PASS="docna"
-DB_NAME="docna"
+DB_USER="citenest"
+DB_PASS="citenest"
+DB_NAME="citenest"
 
 echo "==> Installing packages..."
 apt-get update -qq

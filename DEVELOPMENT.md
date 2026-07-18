@@ -1,4 +1,4 @@
-# Running Docna locally
+# Running Citenest locally
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@
 
 ## 1. One-time system setup
 
-Installs PostgreSQL 16 + pgvector + Redis via apt and creates the `docna` database:
+Installs PostgreSQL 16 + pgvector + Redis via apt and creates the `citenest` database:
 
 ```bash
 cd backend
@@ -97,9 +97,9 @@ The script grants the user an enterprise plan with unlimited documents, queries,
 |---|---|
 | Host | `localhost` |
 | Port | `5432` |
-| Database | `docna` |
-| Username | `docna` |
-| Password | `docna` |
+| Database | `citenest` |
+| Username | `citenest` |
+| Password | `citenest` |
 
 ---
 

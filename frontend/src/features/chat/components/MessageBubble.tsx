@@ -18,7 +18,7 @@ interface MessageBubbleProps {
   message: ChatMessage
 }
 
-function DocnaAvatar() {
+function CitenestAvatar() {
   return (
     <div className="h-7 w-7 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center shrink-0">
       <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none">
@@ -96,7 +96,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         </Avatar>
       ) : (
         <div className="mt-0.5 shrink-0">
-          <DocnaAvatar />
+          <CitenestAvatar />
         </div>
       )}
 
@@ -135,7 +135,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           </div>
         ) : (
           <div className="rounded-xl rounded-tl-sm bg-elevated border border-border px-4 py-2.5 text-sm">
-            <div className="prose-docna">
+            <div className="prose-citenest">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>
                 {message.content}
               </ReactMarkdown>

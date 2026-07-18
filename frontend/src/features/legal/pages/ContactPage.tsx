@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Mail, Briefcase, LifeBuoy } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
 
-const SALES_EMAIL = 'sales@docna.example'
-const SUPPORT_EMAIL = 'support@docna.example'
+const SALES_EMAIL = 'sales@citenest.example'
+const SUPPORT_EMAIL = 'support@citenest.example'
 
 function ContactCard({
   icon: Icon,

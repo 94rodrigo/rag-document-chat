@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="Docna system architecture diagram">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="Citenest system architecture diagram">
   <defs>
     <style>
       .bg    { fill: #0E1014; }
@@ -27,7 +27,7 @@
 
   <rect class="bg" x="0" y="0" width="1200" height="660"/>
 
-  <text class="t title" x="40" y="46">Docna — System Architecture</text>
+  <text class="t title" x="40" y="46">Citenest — System Architecture</text>
   <text class="t sub" x="40" y="70">React SPA · FastAPI · Celery · Postgres + pgvector · Redis · S3-compatible object storage</text>
   <line x1="40" y1="88" x2="1160" y2="88" stroke="#272D38" stroke-width="1"/>
 

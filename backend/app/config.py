@@ -110,7 +110,7 @@ class Settings(BaseSettings):
         return self.app_env == Environment.development
 
     # ── Database ─────────────────────────────────────────────────────────────
-    database_url: str = "postgresql+asyncpg://docna:docna@localhost:5432/docna"
+    database_url: str = "postgresql+asyncpg://citenest:citenest@localhost:5432/citenest"
     database_pool_size: int = 20
     database_max_overflow: int = 10
     database_pool_recycle: int = 3600
@@ -139,7 +139,7 @@ class Settings(BaseSettings):
     aws_access_key_id: str = "minioadmin"
     aws_secret_access_key: str = "minioadmin"
     aws_default_region: str = "us-east-1"
-    s3_bucket_name: str = "docna-documents"
+    s3_bucket_name: str = "citenest-documents"
     s3_endpoint_url: str | None = "http://localhost:9000"
 
     # ── LLM ───────────────────────────────────────────────────────────────────
@@ -213,7 +213,7 @@ class Settings(BaseSettings):
     rag_vector_store: VectorStoreType = VectorStoreType.pgvector
     qdrant_url: str = "http://localhost:6333"
     qdrant_api_key: str = ""
-    qdrant_collection: str = "docna_chunks"
+    qdrant_collection: str = "citenest_chunks"
 
     # ── Anonymous sessions ────────────────────────────────────────────────────
     anon_session_max_queries: int = 5

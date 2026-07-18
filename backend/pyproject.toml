@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "docna-backend"
+name = "citenest-backend"
 version = "0.1.0"
-description = "Docna RAG SaaS backend"
+description = "Citenest RAG SaaS backend"
 requires-python = ">=3.12"
 dependencies = [
     # Web

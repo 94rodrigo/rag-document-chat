@@ -75,7 +75,7 @@ function StreamingBubble({ content }: { content: string }) {
         </svg>
       </div>
       <div className="max-w-[85%] rounded-xl rounded-tl-sm bg-elevated border border-border px-4 py-2.5 text-sm">
-        <div className="prose-docna">
+        <div className="prose-citenest">
           {content ? (
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {content}

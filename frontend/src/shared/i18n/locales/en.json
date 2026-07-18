@@ -43,7 +43,7 @@
       "inputPlaceholder": "Ask anything about your documents…"
     },
     "features": {
-      "eyebrow": "Why Docna",
+      "eyebrow": "Why Citenest",
       "heading": "Built for serious document work",
       "items": [
         { "title": "Semantic retrieval", "desc": "Vector search finds the most relevant passages across thousands of pages in milliseconds." },
@@ -66,11 +66,11 @@
     },
     "cta": {
       "heading": "Start asking better questions",
-      "body": "Join researchers, lawyers, and analysts who use Docna to unlock the knowledge in their documents.",
+      "body": "Join researchers, lawyers, and analysts who use Citenest to unlock the knowledge in their documents.",
       "button": "Get started free — no card required"
     },
     "footer": {
-      "rights": "© {{year}} Docna. All rights reserved.",
+      "rights": "© {{year}} Citenest. All rights reserved.",
       "privacy": "Privacy",
       "terms": "Terms"
     }
@@ -78,7 +78,7 @@
   "auth": {
     "login": {
       "title": "Welcome back",
-      "subtitle": "Sign in to your Docna account",
+      "subtitle": "Sign in to your Citenest account",
       "email": "Email",
       "emailPlaceholder": "you@example.com",
       "password": "Password",
@@ -134,7 +134,7 @@
     }
   },
   "authLayout": {
-    "rights": "© {{year}} Docna",
+    "rights": "© {{year}} Citenest",
     "privacy": "Privacy",
     "terms": "Terms"
   },
@@ -167,7 +167,7 @@
       },
       "withDocuments": {
         "title": "Start a conversation",
-        "body": "Ask anything about your documents. Docna retrieves the relevant passages and cites every source."
+        "body": "Ask anything about your documents. Citenest retrieves the relevant passages and cites every source."
       }
     },
     "suggestedPrompts": [
@@ -315,7 +315,7 @@
     },
     "notifications": {
       "title": "Notifications",
-      "desc": "Control how and when Docna contacts you",
+      "desc": "Control how and when Citenest contacts you",
       "items": [
         { "label": "Document processing complete", "desc": "Notify when your uploads are ready to query" },
         { "label": "Weekly usage summary", "desc": "Receive a weekly digest of your usage stats" },
@@ -402,12 +402,12 @@
     "lastUpdated": "Last updated: {{date}}",
     "privacy": {
       "title": "Privacy Policy",
-      "intro": "This policy explains what information Docna collects, how it's used, and the choices you have. It applies to everyone who uses the Docna service.",
+      "intro": "This policy explains what information Citenest collects, how it's used, and the choices you have. It applies to everyone who uses the Citenest service.",
       "sections": [
         { "heading": "Information we collect", "body": "Account details you provide (name, email), the documents you upload, and basic usage data (like query counts) needed to operate and improve the service." },
         { "heading": "How we use your information", "body": "To provide the core service — indexing your documents and answering your questions — as well as for billing, account support, and service reliability." },
         { "heading": "Document processing & AI", "body": "Uploaded documents are processed to generate embeddings and retrieve relevant passages for your questions. Your documents are never used to train shared or third-party models." },
-        { "heading": "Data sharing", "body": "We don't sell your data. We share the minimum necessary information with service providers — such as our LLM, storage, and payment processors — solely to operate Docna, under contractual confidentiality." },
+        { "heading": "Data sharing", "body": "We don't sell your data. We share the minimum necessary information with service providers — such as our LLM, storage, and payment processors — solely to operate Citenest, under contractual confidentiality." },
         { "heading": "Data retention & deletion", "body": "Your documents and conversations are retained while your account is active. Deleting a document or your account permanently removes the associated data from our systems." },
         { "heading": "Security", "body": "Data is encrypted in transit and at rest. Access to your documents is restricted to your account and to the automated processes that answer your questions." },
         { "heading": "Your rights", "body": "You can access, export, or delete your data at any time from your account settings, or by contacting us directly." },
@@ -418,16 +418,16 @@
     },
     "terms": {
       "title": "Terms of Service",
-      "intro": "These terms govern your use of Docna. By creating an account or using the service, you agree to them.",
+      "intro": "These terms govern your use of Citenest. By creating an account or using the service, you agree to them.",
       "sections": [
-        { "heading": "Using Docna", "body": "You must be able to form a binding contract to use Docna, and you're responsible for the activity that happens under your account." },
+        { "heading": "Using Citenest", "body": "You must be able to form a binding contract to use Citenest, and you're responsible for the activity that happens under your account." },
         { "heading": "Subscriptions & billing", "body": "Paid plans renew automatically for each billing period until cancelled. You can cancel anytime from Billing; you'll retain access until the end of the current period." },
-        { "heading": "Acceptable use", "body": "Don't upload content you don't have the right to share, and don't use Docna to violate the law or the rights of others, or to abuse or overload the service." },
-        { "heading": "Your content", "body": "You own the documents you upload. You grant Docna a limited license to process them solely to provide the service to you — nothing more." },
+        { "heading": "Acceptable use", "body": "Don't upload content you don't have the right to share, and don't use Citenest to violate the law or the rights of others, or to abuse or overload the service." },
+        { "heading": "Your content", "body": "You own the documents you upload. You grant Citenest a limited license to process them solely to provide the service to you — nothing more." },
         { "heading": "AI-generated answers", "body": "Answers are generated by AI and grounded in your documents, but may still be incomplete or inaccurate. Always verify anything important." },
-        { "heading": "Disclaimers & liability", "body": "Docna is provided \"as is,\" without warranties of any kind. To the extent permitted by law, Docna isn't liable for indirect or consequential damages arising from your use of the service." },
-        { "heading": "Termination", "body": "You may stop using Docna and delete your account at any time. We may suspend or terminate accounts that violate these terms." },
-        { "heading": "Changes to these terms", "body": "We may update these terms from time to time; continued use of Docna after a change means you accept the updated terms." }
+        { "heading": "Disclaimers & liability", "body": "Citenest is provided \"as is,\" without warranties of any kind. To the extent permitted by law, Citenest isn't liable for indirect or consequential damages arising from your use of the service." },
+        { "heading": "Termination", "body": "You may stop using Citenest and delete your account at any time. We may suspend or terminate accounts that violate these terms." },
+        { "heading": "Changes to these terms", "body": "We may update these terms from time to time; continued use of Citenest after a change means you accept the updated terms." }
       ],
       "contactPrompt": "Questions about these terms?",
       "contactLink": "Contact us"

@@ -89,8 +89,8 @@ async def main(email: str, name: str, password: str) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Create Docna admin user")
-    parser.add_argument("--email",    default="admin@docna.com")
+    parser = argparse.ArgumentParser(description="Create Citenest admin user")
+    parser.add_argument("--email",    default="admin@citenest.com")
     parser.add_argument("--name",     default="Admin")
     parser.add_argument("--password", default=None)
     args = parser.parse_args()

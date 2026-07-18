@@ -25,13 +25,13 @@ const fadeUp = {
 function Logo() {
   return (
     <div className="flex items-center gap-2.5">
-      <DocnaIcon className="h-7 w-7" />
-      <span className="font-display text-xl text-text-primary tracking-tight">Docna</span>
+      <CitenestIcon className="h-7 w-7" />
+      <span className="font-display text-xl text-text-primary tracking-tight">Citenest</span>
     </div>
   )
 }
 
-function DocnaIcon({ className }: { className?: string }) {
+function CitenestIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none">
       <rect x="3" y="2" width="13" height="16" rx="2" className="fill-accent/20 stroke-accent" strokeWidth="1.5" />
@@ -67,7 +67,7 @@ function HeroVisual() {
           <div className="h-2.5 w-2.5 rounded-full bg-red-500/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-amber-500/60" />
           <div className="h-2.5 w-2.5 rounded-full bg-green-500/60" />
-          <span className="ml-3 text-xs text-text-tertiary font-mono">docna — annual-report-2024.pdf</span>
+          <span className="ml-3 text-xs text-text-tertiary font-mono">citenest — annual-report-2024.pdf</span>
         </div>
 
         <div className="grid grid-cols-[200px_1fr] min-h-[360px]">

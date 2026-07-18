@@ -8,7 +8,7 @@ from app.config import get_settings
 settings = get_settings()
 
 celery = Celery(
-    "docna",
+    "citenest",
     broker=settings.celery_broker_url,
     backend=settings.celery_result_backend,
     include=[

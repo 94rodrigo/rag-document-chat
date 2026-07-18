@@ -5,7 +5,7 @@ import { Button } from '@/shared/components/ui/button'
 import { ThemeToggle } from '../ThemeToggle'
 import { LanguageSelector } from '../LanguageSelector'
 
-function DocnaLogo({ className }: { className?: string }) {
+function CitenestLogo({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="3" y="2" width="13" height="16" rx="2" className="fill-accent/20 stroke-accent" strokeWidth="1.5" />
@@ -23,8 +23,8 @@ export function NotFoundPage() {
     <div className="min-h-screen bg-base flex flex-col">
       <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle">
         <Link to="/" className="flex items-center gap-2.5">
-          <DocnaLogo className="h-6 w-6" />
-          <span className="font-display text-lg text-text-primary">Docna</span>
+          <CitenestLogo className="h-6 w-6" />
+          <span className="font-display text-lg text-text-primary">Citenest</span>
         </Link>
         <div className="flex items-center gap-1">
           <LanguageSelector />

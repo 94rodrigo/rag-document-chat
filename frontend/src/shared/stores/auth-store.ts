@@ -18,7 +18,7 @@ export const useAuthStore = create<AuthState>()(
       clearAuth: () => set({ user: null, isAuthenticated: false }),
     }),
     {
-      name: 'docna-auth',
+      name: 'citenest-auth',
       partialize: (s) => ({ user: s.user, isAuthenticated: s.isAuthenticated }),
     },
   ),

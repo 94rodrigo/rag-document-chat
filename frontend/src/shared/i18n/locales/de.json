@@ -43,7 +43,7 @@
       "inputPlaceholder": "Stellen Sie eine beliebige Frage zu Ihren Dokumenten…"
     },
     "features": {
-      "eyebrow": "Warum Docna",
+      "eyebrow": "Warum Citenest",
       "heading": "Gemacht für ernsthafte Dokumentenarbeit",
       "items": [
         { "title": "Semantische Suche", "desc": "Die Vektorsuche findet die relevantesten Passagen unter Tausenden von Seiten in Millisekunden." },
@@ -66,11 +66,11 @@
     },
     "cta": {
       "heading": "Stellen Sie bessere Fragen",
-      "body": "Schließen Sie sich Forschern, Anwälten und Analysten an, die mit Docna das Wissen in ihren Dokumenten erschließen.",
+      "body": "Schließen Sie sich Forschern, Anwälten und Analysten an, die mit Citenest das Wissen in ihren Dokumenten erschließen.",
       "button": "Kostenlos starten — keine Kreditkarte nötig"
     },
     "footer": {
-      "rights": "© {{year}} Docna. Alle Rechte vorbehalten.",
+      "rights": "© {{year}} Citenest. Alle Rechte vorbehalten.",
       "privacy": "Datenschutz",
       "terms": "AGB"
     }
@@ -78,7 +78,7 @@
   "auth": {
     "login": {
       "title": "Willkommen zurück",
-      "subtitle": "Melden Sie sich bei Ihrem Docna-Konto an",
+      "subtitle": "Melden Sie sich bei Ihrem Citenest-Konto an",
       "email": "E-Mail",
       "emailPlaceholder": "sie@beispiel.de",
       "password": "Passwort",
@@ -134,7 +134,7 @@
     }
   },
   "authLayout": {
-    "rights": "© {{year}} Docna",
+    "rights": "© {{year}} Citenest",
     "privacy": "Datenschutz",
     "terms": "AGB"
   },
@@ -167,7 +167,7 @@
       },
       "withDocuments": {
         "title": "Unterhaltung starten",
-        "body": "Stellen Sie eine beliebige Frage zu Ihren Dokumenten. Docna ruft die relevanten Passagen ab und zitiert jede Quelle."
+        "body": "Stellen Sie eine beliebige Frage zu Ihren Dokumenten. Citenest ruft die relevanten Passagen ab und zitiert jede Quelle."
       }
     },
     "suggestedPrompts": [
@@ -315,7 +315,7 @@
     },
     "notifications": {
       "title": "Benachrichtigungen",
-      "desc": "Legen Sie fest, wie und wann Docna Sie kontaktiert",
+      "desc": "Legen Sie fest, wie und wann Citenest Sie kontaktiert",
       "items": [
         { "label": "Dokumentverarbeitung abgeschlossen", "desc": "Benachrichtigen, wenn Ihre Uploads abfragebereit sind" },
         { "label": "Wöchentliche Nutzungsübersicht", "desc": "Wöchentliche Zusammenfassung Ihrer Nutzungsstatistiken erhalten" },
@@ -402,12 +402,12 @@
     "lastUpdated": "Zuletzt aktualisiert: {{date}}",
     "privacy": {
       "title": "Datenschutzerklärung",
-      "intro": "Diese Richtlinie erklärt, welche Informationen Docna erhebt, wie sie verwendet werden und welche Möglichkeiten Sie haben. Sie gilt für alle, die den Docna-Dienst nutzen.",
+      "intro": "Diese Richtlinie erklärt, welche Informationen Citenest erhebt, wie sie verwendet werden und welche Möglichkeiten Sie haben. Sie gilt für alle, die den Citenest-Dienst nutzen.",
       "sections": [
         { "heading": "Informationen, die wir erheben", "body": "Von Ihnen bereitgestellte Kontodaten (Name, E-Mail), die von Ihnen hochgeladenen Dokumente sowie grundlegende Nutzungsdaten (z. B. Anzahl der Abfragen), die zum Betrieb und zur Verbesserung des Dienstes erforderlich sind." },
         { "heading": "Wie wir Ihre Informationen verwenden", "body": "Um den Kerndienst bereitzustellen — Ihre Dokumente zu indexieren und Ihre Fragen zu beantworten —, sowie für Abrechnung, Kontosupport und Zuverlässigkeit des Dienstes." },
         { "heading": "Dokumentenverarbeitung & KI", "body": "Hochgeladene Dokumente werden verarbeitet, um Embeddings zu erzeugen und relevante Passagen für Ihre Fragen abzurufen. Ihre Dokumente werden niemals zum Training gemeinsamer oder externer Modelle verwendet." },
-        { "heading": "Datenweitergabe", "body": "Wir verkaufen Ihre Daten nicht. Wir teilen die minimal notwendigen Informationen mit Dienstleistern — etwa unseren KI-, Speicher- und Zahlungsanbietern — ausschließlich zum Betrieb von Docna, unter vertraglicher Vertraulichkeit." },
+        { "heading": "Datenweitergabe", "body": "Wir verkaufen Ihre Daten nicht. Wir teilen die minimal notwendigen Informationen mit Dienstleistern — etwa unseren KI-, Speicher- und Zahlungsanbietern — ausschließlich zum Betrieb von Citenest, unter vertraglicher Vertraulichkeit." },
         { "heading": "Datenspeicherung & Löschung", "body": "Ihre Dokumente und Unterhaltungen werden gespeichert, solange Ihr Konto aktiv ist. Das Löschen eines Dokuments oder Ihres Kontos entfernt die zugehörigen Daten dauerhaft aus unseren Systemen." },
         { "heading": "Sicherheit", "body": "Daten werden bei der Übertragung und im Ruhezustand verschlüsselt. Der Zugriff auf Ihre Dokumente ist auf Ihr Konto und die automatisierten Prozesse beschränkt, die Ihre Fragen beantworten." },
         { "heading": "Ihre Rechte", "body": "Sie können jederzeit über Ihre Kontoeinstellungen oder durch direkte Kontaktaufnahme auf Ihre Daten zugreifen, sie exportieren oder löschen." },
@@ -418,16 +418,16 @@
     },
     "terms": {
       "title": "Nutzungsbedingungen",
-      "intro": "Diese Bedingungen regeln Ihre Nutzung von Docna. Mit der Erstellung eines Kontos oder der Nutzung des Dienstes stimmen Sie ihnen zu.",
+      "intro": "Diese Bedingungen regeln Ihre Nutzung von Citenest. Mit der Erstellung eines Kontos oder der Nutzung des Dienstes stimmen Sie ihnen zu.",
       "sections": [
-        { "heading": "Nutzung von Docna", "body": "Sie müssen geschäftsfähig sein, um einen verbindlichen Vertrag für die Nutzung von Docna abzuschließen, und sind für die Aktivitäten unter Ihrem Konto verantwortlich." },
+        { "heading": "Nutzung von Citenest", "body": "Sie müssen geschäftsfähig sein, um einen verbindlichen Vertrag für die Nutzung von Citenest abzuschließen, und sind für die Aktivitäten unter Ihrem Konto verantwortlich." },
         { "heading": "Abonnements & Abrechnung", "body": "Kostenpflichtige Tarife verlängern sich automatisch für jeden Abrechnungszeitraum, bis sie gekündigt werden. Sie können jederzeit unter Abrechnung kündigen; Sie behalten den Zugriff bis zum Ende des aktuellen Zeitraums." },
-        { "heading": "Zulässige Nutzung", "body": "Laden Sie keine Inhalte hoch, an denen Sie keine Rechte haben, und nutzen Sie Docna nicht, um Gesetze oder Rechte Dritter zu verletzen oder den Dienst zu missbrauchen oder zu überlasten." },
-        { "heading": "Ihre Inhalte", "body": "Die von Ihnen hochgeladenen Dokumente gehören Ihnen. Sie gewähren Docna eine beschränkte Lizenz, sie ausschließlich zur Bereitstellung des Dienstes für Sie zu verarbeiten — nicht mehr." },
+        { "heading": "Zulässige Nutzung", "body": "Laden Sie keine Inhalte hoch, an denen Sie keine Rechte haben, und nutzen Sie Citenest nicht, um Gesetze oder Rechte Dritter zu verletzen oder den Dienst zu missbrauchen oder zu überlasten." },
+        { "heading": "Ihre Inhalte", "body": "Die von Ihnen hochgeladenen Dokumente gehören Ihnen. Sie gewähren Citenest eine beschränkte Lizenz, sie ausschließlich zur Bereitstellung des Dienstes für Sie zu verarbeiten — nicht mehr." },
         { "heading": "KI-generierte Antworten", "body": "Antworten werden von KI generiert und stützen sich auf Ihre Dokumente, können aber dennoch unvollständig oder ungenau sein. Überprüfen Sie stets, was wichtig ist." },
-        { "heading": "Haftungsausschluss", "body": "Docna wird „wie besehen“ ohne jegliche Gewährleistung bereitgestellt. Soweit gesetzlich zulässig, haftet Docna nicht für indirekte oder Folgeschäden aus der Nutzung des Dienstes." },
-        { "heading": "Kündigung", "body": "Sie können die Nutzung von Docna jederzeit beenden und Ihr Konto löschen. Wir können Konten sperren oder kündigen, die gegen diese Bedingungen verstoßen." },
-        { "heading": "Änderungen dieser Bedingungen", "body": "Wir können diese Bedingungen von Zeit zu Zeit aktualisieren; die fortgesetzte Nutzung von Docna nach einer Änderung bedeutet, dass Sie die aktualisierten Bedingungen akzeptieren." }
+        { "heading": "Haftungsausschluss", "body": "Citenest wird „wie besehen“ ohne jegliche Gewährleistung bereitgestellt. Soweit gesetzlich zulässig, haftet Citenest nicht für indirekte oder Folgeschäden aus der Nutzung des Dienstes." },
+        { "heading": "Kündigung", "body": "Sie können die Nutzung von Citenest jederzeit beenden und Ihr Konto löschen. Wir können Konten sperren oder kündigen, die gegen diese Bedingungen verstoßen." },
+        { "heading": "Änderungen dieser Bedingungen", "body": "Wir können diese Bedingungen von Zeit zu Zeit aktualisieren; die fortgesetzte Nutzung von Citenest nach einer Änderung bedeutet, dass Sie die aktualisierten Bedingungen akzeptieren." }
       ],
       "contactPrompt": "Fragen zu diesen Bedingungen?",
       "contactLink": "Kontaktieren Sie uns"

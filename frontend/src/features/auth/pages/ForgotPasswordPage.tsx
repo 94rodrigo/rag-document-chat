@@ -5,7 +5,7 @@ import { KeyRound, Settings, LifeBuoy } from 'lucide-react'
 import { Button } from '@/shared/components/ui/button'
 import { useAuthStore } from '@/shared/stores/auth-store'
 
-const SUPPORT_EMAIL = 'support@docna.example'
+const SUPPORT_EMAIL = 'support@citenest.example'
 
 export function ForgotPasswordPage() {
   const { t } = useTranslation()

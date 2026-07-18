@@ -1,4 +1,4 @@
-# Credential/env defaults below (docna/docna, minioadmin/minioadmin, empty
+# Credential/env defaults below (citenest/citenest, minioadmin/minioadmin, empty
 # Flower auth) are for local development only — this file has no separate
 # production variant, so override before ever pointing it at anything but
 # localhost.
@@ -14,7 +14,7 @@
 # container resolves to the container itself, not the db/redis/minio service
 # containers, and would otherwise silently break the entire compose stack.
 x-backend-env: &backend-env
-  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-docna}:${POSTGRES_PASSWORD:-docna}@db:5432/${POSTGRES_DB:-docna}
+  DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-citenest}:${POSTGRES_PASSWORD:-citenest}@db:5432/${POSTGRES_DB:-citenest}
   REDIS_URL: redis://redis:6379/0
   CELERY_BROKER_URL: redis://redis:6379/1
   CELERY_RESULT_BACKEND: redis://redis:6379/2
@@ -25,15 +25,15 @@ services:
     image: pgvector/pgvector:pg16
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-docna}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-docna}
-      POSTGRES_DB: ${POSTGRES_DB:-docna}
+      POSTGRES_USER: ${POSTGRES_USER:-citenest}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-citenest}
+      POSTGRES_DB: ${POSTGRES_DB:-citenest}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pg_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-docna}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-citenest}"]
       interval: 5s
       timeout: 5s
       retries: 5

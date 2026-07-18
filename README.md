@@ -1,6 +1,6 @@
 <div align="center">
 
-# Docna
+# Citenest
 
 **Ask questions about your documents. Get answers with citations, streamed token by token.**
 
@@ -23,13 +23,13 @@ asynchronous document ingestion, Stripe billing, and a React frontend in six lan
 
 ## What this is
 
-Upload a PDF, Word document, or EPUB. Docna parses it, splits it into semantically coherent chunks,
+Upload a PDF, Word document, or EPUB. Citenest parses it, splits it into semantically coherent chunks,
 embeds them, and indexes them for both **vector** and **keyword** search. Ask a question and it retrieves
 the passages that actually answer it, re-ranks them with a cross-encoder, and streams an answer that
 cites the exact document and page it came from.
 
 The interesting part is not that it does RAG — it's *how*. Most "chat with your PDF" projects call
-`similarity_search()` and hope. Docna runs two retrievers in parallel, fuses their rankings with
+`similarity_search()` and hope. Citenest runs two retrievers in parallel, fuses their rankings with
 Reciprocal Rank Fusion, and re-scores the survivors with a model that reads the query and the passage
 *together*. Every component — chunker, embedder, retriever, vector store, re-ranker — sits behind a
 `Protocol` and is swapped by config, not by editing code.
@@ -113,7 +113,7 @@ vectors are precomputed, but it means the model never actually compares the two.
 the `(query, passage)` pair **jointly**, which is far more accurate and far too slow to run over a whole
 corpus.
 
-So Docna uses each for what it's good at: cheap retrieval casts a wide net (20 candidates), and the
+So Citenest uses each for what it's good at: cheap retrieval casts a wide net (20 candidates), and the
 expensive model re-scores only those, returning the top 6 to the LLM.
 
 ---
@@ -139,7 +139,7 @@ expensive model re-scores only those, returning the top 6 to the LLM.
 ### With Docker (everything, one command)
 
 ```bash
-git clone <your-repo-url> docna && cd docna
+git clone <your-repo-url> citenest && cd citenest
 cp backend/.env.example backend/.env   # add your OPENAI_API_KEY
 docker compose --env-file backend/.env up -d
 docker compose exec api alembic upgrade head
@@ -219,7 +219,7 @@ on default secrets, a wildcard CORS origin, or debug mode.
 | Variable | Default | Notes |
 |---|---|---|
 | `OPENAI_API_KEY` | — | Required for the default embedder and LLM |
-| `DATABASE_URL` | `postgresql+asyncpg://docna:docna@localhost:5432/docna` | Needs pgvector |
+| `DATABASE_URL` | `postgresql+asyncpg://citenest:citenest@localhost:5432/citenest` | Needs pgvector |
 | `REDIS_URL` | `redis://localhost:6379/0` | Cache; Celery uses DBs 1 and 2 |
 | `SECRET_KEY` / `JWT_SECRET_KEY` | insecure defaults | Must be changed in production |
 | `STORAGE_PROVIDER` | `local` | `minio`, `s3`, or `local` — `.env.example` defaults to `local`; see the Docker quickstart note above |

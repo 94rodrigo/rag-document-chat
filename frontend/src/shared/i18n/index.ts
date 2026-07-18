@@ -51,7 +51,7 @@ i18n
     nonExplicitSupportedLngs: true,
     detection: {
       order: ['localStorage', 'navigator'],
-      lookupLocalStorage: 'docna-language',
+      lookupLocalStorage: 'citenest-language',
       caches: ['localStorage'],
     },
     interpolation: {

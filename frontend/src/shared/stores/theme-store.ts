@@ -32,7 +32,7 @@ export const useThemeStore = create<ThemeState>()(
       },
     }),
     {
-      name: 'docna-theme',
+      name: 'citenest-theme',
       onRehydrateStorage: () => (state) => {
         if (!state) return
         const resolved =

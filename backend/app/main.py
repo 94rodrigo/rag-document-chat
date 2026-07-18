@@ -76,7 +76,7 @@ async def lifespan(app: FastAPI):
 
 def create_app() -> FastAPI:
     app = FastAPI(
-        title="Docna API",
+        title="Citenest API",
         description="Document Q&A SaaS — RAG backend",
         version="0.1.0",
         # Never expose API docs in production

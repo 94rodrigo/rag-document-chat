@@ -165,48 +165,48 @@
   }
 
   /* Markdown prose styles */
-  .prose-docna {
+  .prose-citenest {
     @apply text-text-primary leading-relaxed;
   }
-  .prose-docna h1, .prose-docna h2, .prose-docna h3 {
+  .prose-citenest h1, .prose-citenest h2, .prose-citenest h3 {
     @apply font-display text-text-primary mt-4 mb-2;
   }
-  .prose-docna p {
+  .prose-citenest p {
     @apply mb-3 last:mb-0;
   }
-  .prose-docna code {
+  .prose-citenest code {
     @apply font-mono text-accent bg-elevated px-1.5 py-0.5 rounded text-[0.8em];
   }
-  .prose-docna pre {
+  .prose-citenest pre {
     @apply bg-elevated border border-border rounded-lg p-4 overflow-x-auto my-3;
   }
-  .prose-docna pre code {
+  .prose-citenest pre code {
     @apply bg-transparent p-0 text-text-primary;
   }
-  .prose-docna ul, .prose-docna ol {
+  .prose-citenest ul, .prose-citenest ol {
     @apply pl-5 mb-3 space-y-1;
   }
-  .prose-docna ul { list-style-type: disc; }
-  .prose-docna ol { list-style-type: decimal; }
-  .prose-docna blockquote {
+  .prose-citenest ul { list-style-type: disc; }
+  .prose-citenest ol { list-style-type: decimal; }
+  .prose-citenest blockquote {
     @apply border-l-2 border-accent pl-4 italic text-text-secondary my-3;
   }
-  .prose-docna a {
+  .prose-citenest a {
     @apply text-accent underline underline-offset-2 hover:no-underline;
   }
-  .prose-docna strong {
+  .prose-citenest strong {
     @apply font-semibold text-text-primary;
   }
-  .prose-docna hr {
+  .prose-citenest hr {
     @apply border-border my-4;
   }
-  .prose-docna table {
+  .prose-citenest table {
     @apply w-full border-collapse text-sm my-3;
   }
-  .prose-docna th {
+  .prose-citenest th {
     @apply border border-border bg-elevated px-3 py-1.5 text-left font-medium text-text-secondary;
   }
-  .prose-docna td {
+  .prose-citenest td {
     @apply border border-border px-3 py-1.5;
   }
 

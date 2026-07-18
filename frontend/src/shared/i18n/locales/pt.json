@@ -43,7 +43,7 @@
       "inputPlaceholder": "Pergunte qualquer coisa sobre seus documentos…"
     },
     "features": {
-      "eyebrow": "Por que Docna",
+      "eyebrow": "Por que Citenest",
       "heading": "Feito para trabalho sério com documentos",
       "items": [
         { "title": "Busca semântica", "desc": "A busca vetorial encontra as passagens mais relevantes entre milhares de páginas em milissegundos." },
@@ -66,11 +66,11 @@
     },
     "cta": {
       "heading": "Comece a fazer perguntas melhores",
-      "body": "Junte-se a pesquisadores, advogados e analistas que usam o Docna para desbloquear o conhecimento em seus documentos.",
+      "body": "Junte-se a pesquisadores, advogados e analistas que usam o Citenest para desbloquear o conhecimento em seus documentos.",
       "button": "Comece grátis — sem cartão necessário"
     },
     "footer": {
-      "rights": "© {{year}} Docna. Todos os direitos reservados.",
+      "rights": "© {{year}} Citenest. Todos os direitos reservados.",
       "privacy": "Privacidade",
       "terms": "Termos"
     }
@@ -78,7 +78,7 @@
   "auth": {
     "login": {
       "title": "Bem-vindo de volta",
-      "subtitle": "Entre na sua conta Docna",
+      "subtitle": "Entre na sua conta Citenest",
       "email": "E-mail",
       "emailPlaceholder": "voce@exemplo.com",
       "password": "Senha",
@@ -134,7 +134,7 @@
     }
   },
   "authLayout": {
-    "rights": "© {{year}} Docna",
+    "rights": "© {{year}} Citenest",
     "privacy": "Privacidade",
     "terms": "Termos"
   },
@@ -167,7 +167,7 @@
       },
       "withDocuments": {
         "title": "Inicie uma conversa",
-        "body": "Pergunte qualquer coisa sobre seus documentos. O Docna recupera as passagens relevantes e cita cada fonte."
+        "body": "Pergunte qualquer coisa sobre seus documentos. O Citenest recupera as passagens relevantes e cita cada fonte."
       }
     },
     "suggestedPrompts": [
@@ -315,7 +315,7 @@
     },
     "notifications": {
       "title": "Notificações",
-      "desc": "Controle como e quando o Docna entra em contato com você",
+      "desc": "Controle como e quando o Citenest entra em contato com você",
       "items": [
         { "label": "Processamento de documento concluído", "desc": "Avisar quando seus envios estiverem prontos para consulta" },
         { "label": "Resumo semanal de uso", "desc": "Receber um resumo semanal das suas estatísticas de uso" },
@@ -402,12 +402,12 @@
     "lastUpdated": "Última atualização: {{date}}",
     "privacy": {
       "title": "Política de Privacidade",
-      "intro": "Esta política explica quais informações o Docna coleta, como são usadas e quais escolhas você tem. Ela se aplica a todos que usam o serviço Docna.",
+      "intro": "Esta política explica quais informações o Citenest coleta, como são usadas e quais escolhas você tem. Ela se aplica a todos que usam o serviço Citenest.",
       "sections": [
         { "heading": "Informações que coletamos", "body": "Dados da conta que você fornece (nome, e-mail), os documentos que você envia e dados básicos de uso (como número de consultas) necessários para operar e melhorar o serviço." },
         { "heading": "Como usamos suas informações", "body": "Para fornecer o serviço principal — indexar seus documentos e responder às suas perguntas —, além de faturamento, suporte à conta e confiabilidade do serviço." },
         { "heading": "Processamento de documentos e IA", "body": "Os documentos enviados são processados para gerar embeddings e recuperar as passagens relevantes para suas perguntas. Seus documentos nunca são usados para treinar modelos compartilhados ou de terceiros." },
-        { "heading": "Compartilhamento de dados", "body": "Não vendemos seus dados. Compartilhamos o mínimo necessário de informações com provedores de serviço — como nossos processadores de IA, armazenamento e pagamento — apenas para operar o Docna, sob confidencialidade contratual." },
+        { "heading": "Compartilhamento de dados", "body": "Não vendemos seus dados. Compartilhamos o mínimo necessário de informações com provedores de serviço — como nossos processadores de IA, armazenamento e pagamento — apenas para operar o Citenest, sob confidencialidade contratual." },
         { "heading": "Retenção e exclusão de dados", "body": "Seus documentos e conversas são mantidos enquanto sua conta estiver ativa. Excluir um documento ou sua conta remove permanentemente os dados associados de nossos sistemas." },
         { "heading": "Segurança", "body": "Os dados são criptografados em trânsito e em repouso. O acesso aos seus documentos é restrito à sua conta e aos processos automatizados que respondem às suas perguntas." },
         { "heading": "Seus direitos", "body": "Você pode acessar, exportar ou excluir seus dados a qualquer momento nas configurações da sua conta, ou entrando em contato conosco diretamente." },
@@ -418,16 +418,16 @@
     },
     "terms": {
       "title": "Termos de Serviço",
-      "intro": "Estes termos regem o uso do Docna. Ao criar uma conta ou usar o serviço, você concorda com eles.",
+      "intro": "Estes termos regem o uso do Citenest. Ao criar uma conta ou usar o serviço, você concorda com eles.",
       "sections": [
-        { "heading": "Uso do Docna", "body": "Você deve ter capacidade legal para firmar um contrato vinculante para usar o Docna, e é responsável pela atividade realizada em sua conta." },
+        { "heading": "Uso do Citenest", "body": "Você deve ter capacidade legal para firmar um contrato vinculante para usar o Citenest, e é responsável pela atividade realizada em sua conta." },
         { "heading": "Assinaturas e faturamento", "body": "Os planos pagos renovam automaticamente a cada período de cobrança até serem cancelados. Você pode cancelar a qualquer momento em Faturamento; manterá o acesso até o fim do período atual." },
-        { "heading": "Uso aceitável", "body": "Não envie conteúdo sobre o qual você não tenha direito de compartilhar, e não use o Docna para violar a lei ou os direitos de terceiros, nem para abusar ou sobrecarregar o serviço." },
-        { "heading": "Seu conteúdo", "body": "Você é o proprietário dos documentos que envia. Você concede ao Docna uma licença limitada para processá-los unicamente para fornecer o serviço a você — nada além disso." },
+        { "heading": "Uso aceitável", "body": "Não envie conteúdo sobre o qual você não tenha direito de compartilhar, e não use o Citenest para violar a lei ou os direitos de terceiros, nem para abusar ou sobrecarregar o serviço." },
+        { "heading": "Seu conteúdo", "body": "Você é o proprietário dos documentos que envia. Você concede ao Citenest uma licença limitada para processá-los unicamente para fornecer o serviço a você — nada além disso." },
         { "heading": "Respostas geradas por IA", "body": "As respostas são geradas por IA e baseadas nos seus documentos, mas ainda podem ser incompletas ou imprecisas. Sempre verifique o que for importante." },
-        { "heading": "Isenções e responsabilidade", "body": "O Docna é fornecido \"como está\", sem garantias de qualquer tipo. Na medida permitida por lei, o Docna não é responsável por danos indiretos ou consequenciais decorrentes do uso do serviço." },
-        { "heading": "Encerramento", "body": "Você pode parar de usar o Docna e excluir sua conta a qualquer momento. Podemos suspender ou encerrar contas que violem estes termos." },
-        { "heading": "Alterações nestes termos", "body": "Podemos atualizar estes termos periodicamente; o uso contínuo do Docna após uma alteração significa que você aceita os termos atualizados." }
+        { "heading": "Isenções e responsabilidade", "body": "O Citenest é fornecido \"como está\", sem garantias de qualquer tipo. Na medida permitida por lei, o Citenest não é responsável por danos indiretos ou consequenciais decorrentes do uso do serviço." },
+        { "heading": "Encerramento", "body": "Você pode parar de usar o Citenest e excluir sua conta a qualquer momento. Podemos suspender ou encerrar contas que violem estes termos." },
+        { "heading": "Alterações nestes termos", "body": "Podemos atualizar estes termos periodicamente; o uso contínuo do Citenest após uma alteração significa que você aceita os termos atualizados." }
       ],
       "contactPrompt": "Dúvidas sobre estes termos?",
       "contactLink": "Fale conosco"

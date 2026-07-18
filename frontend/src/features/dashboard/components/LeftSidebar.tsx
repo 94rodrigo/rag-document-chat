@@ -31,7 +31,7 @@ import type { Document, Conversation } from '@/shared/types'
 
 // ─── Logo ─────────────────────────────────────────────────────────────────────
 
-function DocnaLogo() {
+function CitenestLogo() {
   return (
     <Link to="/dashboard" className="flex items-center gap-2 px-3 py-1 rounded hover:bg-elevated transition-colors">
       <svg className="h-6 w-6 shrink-0" viewBox="0 0 24 24" fill="none">
@@ -40,7 +40,7 @@ function DocnaLogo() {
         <circle cx="18" cy="18" r="4" className="fill-accent/20 stroke-accent" strokeWidth="1.5" />
         <path d="M16.5 18h3M18 16.5v3" className="stroke-accent" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
-      <span className="font-display text-base text-text-primary tracking-tight">Docna</span>
+      <span className="font-display text-base text-text-primary tracking-tight">Citenest</span>
     </Link>
   )
 }
@@ -223,7 +223,7 @@ export function LeftSidebar() {
 
       {/* Header */}
       <div className="flex items-center justify-between px-3 pt-4 pb-3">
-        <DocnaLogo />
+        <CitenestLogo />
         <div className="flex items-center gap-0.5">
           <LanguageSelector />
           <ThemeToggle />
