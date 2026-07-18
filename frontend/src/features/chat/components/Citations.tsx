@@ -20,7 +20,9 @@ export function Citations({ citations, onCitationClick }: CitationsProps) {
           onClick={() => {
             onCitationClick?.(c)
             const page = c.pageNumber ? `?page=${c.pageNumber}` : ''
-            navigate(`/documents/${c.documentId}${page}`, { state: { snippet: c.content } })
+            navigate(`/documents/${c.documentId}${page}`, {
+              state: { snippet: c.content, from: '/dashboard' },
+            })
           }}
           className="inline-flex items-center gap-1.5 rounded border border-accent/25 bg-accent/8 px-2 py-1 text-[11px] text-accent hover:bg-accent/15 transition-colors"
           title={c.content.slice(0, 120) + '…'}

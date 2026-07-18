@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
@@ -17,6 +17,7 @@ export function SourceCard({ chunk, index }: SourceCardProps) {
   const { t } = useTranslation()
   const [expanded, setExpanded] = useState(false)
   const navigate = useNavigate()
+  const location = useLocation()
 
   const scorePercent = Math.round(chunk.score * 100)
   const previewText = chunk.content.slice(0, 200)
@@ -87,7 +88,9 @@ export function SourceCard({ chunk, index }: SourceCardProps) {
           className="h-6 text-[10px] gap-1 text-text-tertiary hover:text-accent"
           onClick={() => {
             const page = chunk.pageNumber ? `?page=${chunk.pageNumber}` : ''
-            navigate(`/documents/${chunk.documentId}${page}`, { state: { snippet: chunk.content } })
+            navigate(`/documents/${chunk.documentId}${page}`, {
+              state: { snippet: chunk.content, from: location.pathname },
+            })
           }}
         >
           <ExternalLink className="size-2.5" />

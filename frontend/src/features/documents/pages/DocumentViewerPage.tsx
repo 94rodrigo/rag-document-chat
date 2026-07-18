@@ -91,11 +91,22 @@ export function DocumentViewerPage() {
   )
   const [exitedHighlight, setExitedHighlight] = useState(false)
 
+  // Where the citation/source click that brought us here should return to (chat,
+  // a document search page, …) instead of always landing on the documents list.
+  // Captured the same way as `snippet` above, for the same reason — setSearchParams
+  // clears router state on every highlight-mode page change.
+  const [backTo, setBackTo] = useState<string>(
+    () => (location.state as { from?: string } | null)?.from ?? '/documents',
+  )
+
   useEffect(() => {
-    const incoming = (location.state as { snippet?: string } | null)?.snippet
-    if (incoming) {
-      setSnippet(incoming)
+    const state = location.state as { snippet?: string; from?: string } | null
+    if (state?.snippet) {
+      setSnippet(state.snippet)
       setExitedHighlight(false)
+    }
+    if (state?.from) {
+      setBackTo(state.from)
     }
   }, [location.state])
 
@@ -164,7 +175,7 @@ export function DocumentViewerPage() {
       <header className="sticky top-0 z-10 flex items-center justify-between px-8 py-4 border-b border-border bg-base/80 glass">
         <div className="flex items-center gap-3">
           <Button variant="ghost" size="icon-sm" asChild>
-            <Link to="/documents"><ArrowLeft className="size-4" /></Link>
+            <Link to={backTo}><ArrowLeft className="size-4" /></Link>
           </Button>
           <div className="flex items-center gap-3">
             <div className="h-8 w-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
