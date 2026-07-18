@@ -17,6 +17,16 @@ export function useDocuments() {
       setDocuments(res.items)
       return res
     },
+    // Ingestion (OCR/chunking/embedding) happens async on a worker after upload
+    // returns, so a document can still be "processing" long after the one-shot
+    // invalidation in useUploadDocument fires. Keep polling while any document is
+    // still in flight so the status badge flips to ready/error on its own instead
+    // of requiring a manual page reload; stop once nothing is pending.
+    refetchInterval: (query) => {
+      const items = query.state.data?.items ?? []
+      const hasPending = items.some((d) => d.status === 'processing' || d.status === 'uploading')
+      return hasPending ? 3000 : false
+    },
   })
 }
 
